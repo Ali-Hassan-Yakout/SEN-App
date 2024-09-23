@@ -4,7 +4,7 @@ class Quiz {
   String quizId;
   String teacherId;
   String teacherName;
-  String subject;
+  String? subject;
   String title;
   String description;
   String level;

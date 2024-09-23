@@ -19,6 +19,8 @@ class AllGradesCubit extends Cubit<AllGradesState> {
       await fireStore
           .collection('attempts')
           .where('studentId', isEqualTo: userId)
+          .where('level', isEqualTo: level)
+          .where('subject', isEqualTo: subject)
           .get()
           .then((value) {
         attempts.clear();

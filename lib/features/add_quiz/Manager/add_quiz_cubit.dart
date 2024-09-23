@@ -114,7 +114,7 @@ class AddQuizCubit extends Cubit<AddQuizState> {
         'quizId': quizId,
         'teacherId': teacher.userId,
         'teacherName': teacher.name,
-        'subject': teacher.subject,
+        'subject': teacher.subject ?? 'Therapy',
         'title': titleController.text,
         'description': descriptionController.text,
         'level': level.first,

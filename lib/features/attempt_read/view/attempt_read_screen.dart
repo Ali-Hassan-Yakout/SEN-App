@@ -110,7 +110,7 @@ class AttemptReadScreen extends StatelessWidget {
                 CircularPercentIndicator(
                   radius: 60.r,
                   lineWidth: 10.w,
-                  percent: attempt.score / quiz.questions.length,
+                  percent: attempt.score / attempt.answers.length,
                   center: Text(
                     "${(attempt.score / quiz.questions.length) * 100}%",
                     style: TextStyle(
