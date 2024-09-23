@@ -12,7 +12,7 @@ import 'package:sen/features/teacher_home/view/teacher_home_screen.dart';
 import 'package:sen/features/therapist_home/view/therapist_home_screen.dart';
 import 'package:sen/utils/app_colors.dart';
 
-main() async {
+main()  async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(

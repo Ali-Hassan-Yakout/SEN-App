@@ -1290,7 +1290,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SizedBox(height: 15.h),
               InkWell(
                 onTap: () {
-                  cubit.difficulties = "Delayed pronunciation";
+                  cubit.difficulties = "Conduct disorder";
                   cubit.difficultiesIndex = 1;
                   BlocProvider.of<AppManagerCubit>(context).onSelectChange();
                 },
@@ -1313,7 +1313,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "Delayed pronunciation",
+                    "Conduct disorder",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18.sp,

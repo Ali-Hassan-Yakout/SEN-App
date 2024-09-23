@@ -18,7 +18,7 @@ class IntroScreen extends StatelessWidget {
           padding: EdgeInsets.only(
             right: 15.w,
             left: 15.w,
-            top: 150.h,
+            top: 90.h,
             bottom: 15.h,
           ),
           child: Column(
@@ -30,15 +30,13 @@ class IntroScreen extends StatelessWidget {
                 fit: BoxFit.fitWidth,
               ),
               const Spacer(),
-              Expanded(
-                child: Text(
-                  "The most fun way to learn",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.textGrey,
-                    fontSize: 28.sp,
-                    fontFamily: AppFonts.mainFont,
-                  ),
+              Text(
+                "The most fun way to learn",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppColors.textGrey,
+                  fontSize: 28.sp,
+                  fontFamily: AppFonts.mainFont,
                 ),
               ),
               const Spacer(),
