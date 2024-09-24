@@ -68,6 +68,11 @@ class _TherapistHomeScreenState extends State<TherapistHomeScreen> {
           },
           items: [
             Icon(
+              Icons.play_lesson_rounded,
+              size: 40.r,
+              color: Colors.white,
+            ),
+            Icon(
               Icons.quiz_rounded,
               size: 40.r,
               color: Colors.white,

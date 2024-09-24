@@ -76,7 +76,7 @@ class AddLessonCubit extends Cubit<AddLessonState> {
         'lessonId': lessonId,
         'teacherId': teacher.userId,
         'teacherName': teacher.name,
-        'subject': teacher.subject,
+        'subject': teacher.subject ?? "Therapy",
         'level': level.first,
         'title': titleController.text,
         'description': descriptionController.text,
