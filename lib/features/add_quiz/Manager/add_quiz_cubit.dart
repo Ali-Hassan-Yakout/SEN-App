@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sen/features/add_quiz/Manager/add_quiz_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/models/quiz.dart';
 import 'package:sen/models/teacher.dart';
 
@@ -78,7 +79,7 @@ class AddQuizCubit extends Cubit<AddQuizState> {
       });
       emit(UploadImageSuccess());
     } catch (e) {
-      emit(UploadImageFailure('Video upload failed'));
+      emit(UploadImageFailure(S().imageUploadFailed));
     }
   }
 
@@ -87,7 +88,7 @@ class AddQuizCubit extends Cubit<AddQuizState> {
         descriptionController.text.isEmpty ||
         level.first.isEmpty ||
         questions.isEmpty) {
-      emit(UploadQuizFailure("Details can't be blank"));
+      emit(UploadQuizFailure(S().detailsCantBeBlank));
       return;
     }
     loading = true;
@@ -126,7 +127,7 @@ class AddQuizCubit extends Cubit<AddQuizState> {
     } catch (e) {
       loading = false;
       onLoadingChange();
-      emit(UploadQuizFailure("Quiz upload failed"));
+      emit(UploadQuizFailure(S().quizUploadFailed));
     }
   }
 

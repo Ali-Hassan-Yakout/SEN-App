@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sen/features/app_manager/app_manager_cubit.dart';
+import 'package:sen/features/app_manager/app_manager_state.dart';
 import 'package:sen/features/grades_control/manager/grades_control_cubit.dart';
 import 'package:sen/features/grades_control/manager/grades_control_state.dart';
 import 'package:sen/features/student_quizzes/view/student_quizzes_screen.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 import 'package:sen/utils/app_toast.dart';
@@ -47,20 +50,27 @@ class _GradeControlScreenState extends State<GradeControlScreen> {
                   textInputAction: TextInputAction.done,
                   cursorColor: AppColors.primary,
                   style: const TextStyle(
-                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                   decoration: InputDecoration(
-                    label: Text(
-                      "Search",
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        color: AppColors.textGrey,
-                        fontFamily: AppFonts.mainFont,
-                      ),
+                    label: BlocBuilder<AppManagerCubit, AppManagerState>(
+                      buildWhen: (previous, current) =>
+                          current is LanguageChange,
+                      builder: (context, state) {
+                        return Text(
+                          S().search,
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontFamily: AppFonts.mainFont,
+                          ),
+                        );
+                      },
                     ),
                     filled: true,
-                    fillColor: AppColors.textFormFieldFill,
+                    fillColor: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textFormFieldFillLight
+                        : AppColors.textFormFieldFillDark,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.r),
@@ -119,7 +129,9 @@ class _GradeControlScreenState extends State<GradeControlScreen> {
             padding: EdgeInsets.all(15.r),
             margin: EdgeInsets.only(bottom: 15.w),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.white
+                  : AppColors.textFormFieldFillDark,
               border: Border.all(
                 color: AppColors.textFormFieldBorder,
                 width: 2.5.w,
@@ -154,39 +166,60 @@ class _GradeControlScreenState extends State<GradeControlScreen> {
                             cubit.students[index].name,
                             style: TextStyle(
                               fontSize: 20.sp,
-                              color: Colors.black,
+                              fontWeight: FontWeight.w800,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
                           Text(
                             cubit.students[index].email,
-                            overflow: TextOverflow.fade,
+                            overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             softWrap: false,
                             style: TextStyle(
                               fontSize: 16.sp,
-                              color: AppColors.textGrey,
+                              color: Theme.of(context).brightness == Brightness.light
+                                  ? AppColors.textGrey
+                                  : Colors.white,
+                              fontWeight: FontWeight.w800,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
                           Row(
                             children: [
-                              Text(
-                                "Grade : ${cubit.students[index].grade}",
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  color: AppColors.textGrey,
-                                  fontFamily: AppFonts.mainFont,
-                                ),
+                              BlocBuilder<AppManagerCubit, AppManagerState>(
+                                buildWhen: (previous, current) =>
+                                    current is LanguageChange,
+                                builder: (context, state) {
+                                  return Text(
+                                    "${S().grade} : ${cubit.students[index].grade}",
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Theme.of(context).brightness == Brightness.light
+                                          ? AppColors.textGrey
+                                          : Colors.white,
+                                      fontWeight: FontWeight.w800,
+                                      fontFamily: AppFonts.mainFont,
+                                    ),
+                                  );
+                                },
                               ),
                               SizedBox(width: 15.w),
-                              Text(
-                                "Age : ${cubit.students[index].age}",
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  color: AppColors.textGrey,
-                                  fontFamily: AppFonts.mainFont,
-                                ),
+                              BlocBuilder<AppManagerCubit, AppManagerState>(
+                                buildWhen: (previous, current) =>
+                                    current is LanguageChange,
+                                builder: (context, state) {
+                                  return Text(
+                                    "${S().age} : ${cubit.students[index].age}",
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Theme.of(context).brightness == Brightness.light
+                                          ? AppColors.textGrey
+                                          : Colors.white,
+                                      fontWeight: FontWeight.w800,
+                                      fontFamily: AppFonts.mainFont,
+                                    ),
+                                  );
+                                },
                               ),
                             ],
                           ),

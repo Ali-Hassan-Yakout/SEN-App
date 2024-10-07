@@ -5,6 +5,7 @@ import 'package:sen/features/add_lesson/manager/add_lesson_cubit.dart';
 import 'package:sen/features/add_lesson/manager/add_lesson_state.dart';
 import 'package:sen/features/app_manager/app_manager_cubit.dart';
 import 'package:sen/features/app_manager/app_manager_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 import 'package:sen/utils/app_toast.dart';
@@ -47,16 +48,17 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                 Navigator.pop(context);
               },
               icon: Icon(
-                Icons.arrow_circle_left_rounded,
-                size: 40.r,
+                Icons.arrow_back_ios_new_rounded,
+                size: 25.r,
                 color: AppColors.primary,
               ),
             ),
             title: Text(
-              "Add Lesson",
+              S().addLesson,
               style: TextStyle(
                 color: AppColors.primary,
                 fontSize: 30.sp,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),
@@ -73,10 +75,10 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  "Level",
+                  S().level,
                   style: TextStyle(
                     fontSize: 20.sp,
-                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -94,10 +96,10 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                         ButtonSegment(
                           value: "1",
                           label: Text(
-                            "Level 1",
+                            "${S().level} 1",
                             style: TextStyle(
-                              color: Colors.black,
                               fontSize: 18.sp,
+                              fontWeight: FontWeight.w800,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
@@ -105,10 +107,10 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                         ButtonSegment(
                           value: "2",
                           label: Text(
-                            "Level 2",
+                            "${S().level} 2",
                             style: TextStyle(
-                              color: Colors.black,
                               fontSize: 18.sp,
+                              fontWeight: FontWeight.w800,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
@@ -116,10 +118,10 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                         ButtonSegment(
                           value: "3",
                           label: Text(
-                            "Level 3",
+                            "${S().level} 3",
                             style: TextStyle(
-                              color: Colors.black,
                               fontSize: 18.sp,
+                              fontWeight: FontWeight.w800,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
@@ -127,10 +129,10 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                         ButtonSegment(
                           value: "4",
                           label: Text(
-                            "Level 4",
+                            "${S().level} 4",
                             style: TextStyle(
-                              color: Colors.black,
                               fontSize: 18.sp,
+                              fontWeight: FontWeight.w800,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
@@ -148,10 +150,10 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
               ),
               SizedBox(height: 15.h),
               Text(
-                "Title",
+                S().title,
                 style: TextStyle(
                   fontSize: 20.sp,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
@@ -162,12 +164,14 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                 textInputAction: TextInputAction.next,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: AppColors.textFormFieldFill,
+                  fillColor: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(16.r),
@@ -190,10 +194,10 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
               ),
               SizedBox(height: 15.h),
               Text(
-                "Description",
+                S().description,
                 style: TextStyle(
                   fontSize: 20.sp,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
@@ -206,7 +210,7 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                   textInputAction: TextInputAction.done,
                   cursorColor: AppColors.primary,
                   style: const TextStyle(
-                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                   maxLines: null,
@@ -214,7 +218,9 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                   textAlignVertical: TextAlignVertical.top,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: AppColors.textFormFieldFill,
+                    fillColor: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textFormFieldFillLight
+                        : AppColors.textFormFieldFillDark,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.r),
@@ -260,10 +266,11 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                               ),
                             ),
                             label: Text(
-                              'ATTACH',
+                              S().attach,
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 color: Colors.white,
+                                fontWeight: FontWeight.w800,
                                 fontFamily: AppFonts.mainFont,
                               ),
                             ),
@@ -293,7 +300,7 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
                               ),
                             ),
                             label: Text(
-                              'UPLOAD',
+                              S().upload,
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 color: Colors.white,
@@ -328,7 +335,7 @@ class _AddLessonScreenState extends State<AddLessonScreen> {
   }
 
   void onLessonUploadSuccess() {
-    displayToast('Lesson Uploaded');
+    displayToast(S().lessonUploaded);
     Navigator.pop(context);
   }
 }

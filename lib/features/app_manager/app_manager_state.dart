@@ -9,3 +9,7 @@ final class SelectChange extends AppManagerState {}
 final class TextFormFieldChange extends AppManagerState {}
 
 final class ScreenChange extends AppManagerState {}
+
+final class LanguageChange extends AppManagerState {}
+
+final class ThemeChange extends AppManagerState {}

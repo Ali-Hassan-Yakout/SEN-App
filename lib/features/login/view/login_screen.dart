@@ -10,6 +10,7 @@ import 'package:sen/features/login/manager/login_state.dart';
 import 'package:sen/features/parent_home/view/parent_home_screen.dart';
 import 'package:sen/features/teacher_home/view/teacher_home_screen.dart';
 import 'package:sen/features/therapist_home/view/therapist_home_screen.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 
@@ -48,8 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.pop(context);
               },
               icon: Icon(
-                Icons.arrow_circle_left_rounded,
-                size: 40.r,
+                Icons.arrow_back_ios_new_rounded,
+                size: 25.r,
                 color: AppColors.primary,
               ),
             ),
@@ -72,10 +73,10 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Enter your details",
+                  S().enterYourDetails,
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 25.sp,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -86,18 +87,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   textInputAction: TextInputAction.next,
                   cursorColor: AppColors.primary,
                   style: const TextStyle(
-                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                   decoration: InputDecoration(
-                    hintText: "SEN username or email",
+                    hintText: S().senUsernameOrEmail,
                     hintStyle: TextStyle(
-                      color: Colors.grey,
                       fontSize: 18.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                     filled: true,
-                    fillColor: AppColors.textFormFieldFill,
+                    fillColor: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textFormFieldFillLight
+                        : AppColors.textFormFieldFillDark,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(16.r),
@@ -125,7 +128,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   builder: (context, state) {
                     return Container(
                       decoration: BoxDecoration(
-                        color: AppColors.textFormFieldFill,
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16.r),
                           bottomRight: Radius.circular(16.r),
@@ -152,14 +157,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         textInputAction: TextInputAction.done,
                         cursorColor: AppColors.primary,
                         style: const TextStyle(
-                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
                           fontFamily: AppFonts.mainFont,
                         ),
                         decoration: InputDecoration(
-                          hintText: "Password",
+                          hintText: S().password,
                           hintStyle: TextStyle(
-                            color: Colors.grey,
                             fontSize: 18.sp,
+                            fontWeight: FontWeight.w800,
                             fontFamily: AppFonts.mainFont,
                           ),
                           suffixIcon: IconButton(
@@ -226,10 +231,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     child: Text(
-                      "SIGN IN",
+                      S().signIn,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.sp,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
@@ -246,10 +252,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                   child: Text(
-                    "FORGOT PASSWORD",
+                    S().forgetPassword,
                     style: TextStyle(
                       color: AppColors.primary,
                       fontSize: 18.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -260,36 +267,42 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: "By signing in to SEN, you agree to our ",
+                        text: S().bySigning,
                         style: TextStyle(
-                          color: AppColors.textGrey,
+                          color: Theme.of(context).brightness == Brightness.light
+                              ? AppColors.textGrey
+                              : Colors.white,
                           fontSize: 17.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       TextSpan(
-                        text: "Terms ",
+                        text: S().terms,
                         style: TextStyle(
                           color: AppColors.primary,
                           fontSize: 17.sp,
                           fontFamily: AppFonts.mainFont,
+                          fontWeight: FontWeight.w800,
                           decoration: TextDecoration.underline,
                         ),
                       ),
                       TextSpan(
-                        text: "and ",
+                        text: S().and,
                         style: TextStyle(
-                          color: AppColors.textGrey,
+                          color: Theme.of(context).brightness == Brightness.light
+                              ? AppColors.textGrey
+                              : Colors.white,
                           fontSize: 17.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       TextSpan(
-                        text: "Privacy Policy",
+                        text: S().privacyPolicy,
                         style: TextStyle(
                           color: AppColors.primary,
                           fontSize: 17.sp,
                           fontFamily: AppFonts.mainFont,
+                          fontWeight: FontWeight.w800,
                           decoration: TextDecoration.underline,
                         ),
                       ),

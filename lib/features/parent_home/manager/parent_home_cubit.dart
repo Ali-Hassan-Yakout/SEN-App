@@ -8,12 +8,6 @@ class ParentHomeCubit extends Cubit<ParentHomeState> {
   ParentHomeCubit() : super(ParentHomeInitial());
 
   int pageIndex = 0;
-  List<String> appBarTitles = [
-    "Subjects",
-    "Quizzes",
-    "Grades",
-    "Reports",
-  ];
   List<Widget> pages = [
     const SubjectsScreen(screen: 'subjects'),
     const SubjectsScreen(screen: 'quizzes'),

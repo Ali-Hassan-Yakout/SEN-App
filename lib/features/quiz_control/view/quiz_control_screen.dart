@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/add_quiz/view/add_quiz_screen.dart';
+import 'package:sen/features/app_manager/app_manager_cubit.dart';
+import 'package:sen/features/app_manager/app_manager_state.dart';
 import 'package:sen/features/quiz_answer/view/quiz_answer_screen.dart';
 import 'package:sen/features/quiz_control/manager/quiz_control_cubit.dart';
 import 'package:sen/features/quiz_control/manager/quiz_control_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 import 'package:sen/utils/app_toast.dart';
@@ -72,20 +75,28 @@ class _QuizControlScreenState extends State<QuizControlScreen> {
                   textInputAction: TextInputAction.done,
                   cursorColor: AppColors.primary,
                   style: const TextStyle(
-                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                   decoration: InputDecoration(
-                    label: Text(
-                      "Search",
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        color: AppColors.textGrey,
-                        fontFamily: AppFonts.mainFont,
-                      ),
+                    label: BlocBuilder<AppManagerCubit, AppManagerState>(
+                      buildWhen: (previous, current) =>
+                          current is LanguageChange,
+                      builder: (context, state) {
+                        return Text(
+                          S().search,
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w800,
+                            fontFamily: AppFonts.mainFont,
+                          ),
+                        );
+                      },
                     ),
                     filled: true,
-                    fillColor: AppColors.textFormFieldFill,
+                    fillColor: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textFormFieldFillLight
+                        : AppColors.textFormFieldFillDark,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.r),
@@ -143,7 +154,9 @@ class _QuizControlScreenState extends State<QuizControlScreen> {
                     bottom: 15.h,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.white
+                        : AppColors.textFormFieldFillDark,
                     border: Border.all(
                       color: AppColors.textFormFieldBorder,
                       width: 2.5.w,
@@ -157,15 +170,23 @@ class _QuizControlScreenState extends State<QuizControlScreen> {
                       Row(
                         children: [
                           Expanded(
-                            child: Text(
-                              "Title : ${cubit.quizzes[index].title}",
-                              overflow: TextOverflow.fade,
-                              maxLines: 1,
-                              softWrap: false,
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                fontFamily: AppFonts.mainFont,
-                              ),
+                            child:
+                                BlocBuilder<AppManagerCubit, AppManagerState>(
+                              buildWhen: (previous, current) =>
+                                  current is LanguageChange,
+                              builder: (context, state) {
+                                return Text(
+                                  "${S().title} : ${cubit.quizzes[index].title}",
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  softWrap: false,
+                                  style: TextStyle(
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w800,
+                                    fontFamily: AppFonts.mainFont,
+                                  ),
+                                );
+                              },
                             ),
                           ),
                           SizedBox(
@@ -194,22 +215,33 @@ class _QuizControlScreenState extends State<QuizControlScreen> {
                       SizedBox(height: 15.h),
                       Text(
                         cubit.quizzes[index].description,
-                        overflow: TextOverflow.fade,
+                        overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         softWrap: false,
                         style: TextStyle(
                           fontSize: 16.sp,
-                          color: AppColors.textGrey,
+                          color: Theme.of(context).brightness == Brightness.light
+                              ? AppColors.textGrey
+                              : Colors.white,
+                          fontWeight: FontWeight.w800,
                           fontFamily: AppFonts.mainFont,
                         ),
                       ),
-                      Text(
-                        "Level : ${cubit.quizzes[index].level}",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          color: AppColors.textGrey,
-                          fontFamily: AppFonts.mainFont,
-                        ),
+                      BlocBuilder<AppManagerCubit, AppManagerState>(
+                        buildWhen: (previous, current) =>
+                            current is LanguageChange,
+                        builder: (context, state) {
+                          return Text(
+                            "${S().level} : ${cubit.quizzes[index].level}",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              color: Theme.of(context).brightness == Brightness.light
+                                  ? AppColors.textGrey
+                                  : Colors.white,
+                              fontFamily: AppFonts.mainFont,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -227,17 +259,21 @@ class _QuizControlScreenState extends State<QuizControlScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(
-            'Confirm Deletion',
-            style: TextStyle(
+          title: Text(
+            S().confirmDeletion,
+            style: const TextStyle(
+              fontWeight: FontWeight.w800,
               fontFamily: AppFonts.mainFont,
             ),
           ),
           content: Text(
-            'Are you sure you want to delete this quiz?',
+            S().areYouSureQuiz,
             style: TextStyle(
               fontSize: 16.sp,
-              color: AppColors.textGrey,
+              color: Theme.of(context).brightness == Brightness.light
+                  ? AppColors.textGrey
+                  : Colors.white,
+              fontWeight: FontWeight.w800,
               fontFamily: AppFonts.mainFont,
             ),
           ),
@@ -257,10 +293,11 @@ class _QuizControlScreenState extends State<QuizControlScreen> {
                       ),
                     ),
                     child: Text(
-                      'Cancel',
+                      S().cancel,
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.white,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
@@ -280,10 +317,11 @@ class _QuizControlScreenState extends State<QuizControlScreen> {
                       ),
                     ),
                     child: Text(
-                      'Delete',
+                      S().delete,
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.white,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),

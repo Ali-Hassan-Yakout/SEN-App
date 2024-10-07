@@ -9,6 +9,7 @@ import 'package:sen/features/register/manager/register_cubit.dart';
 import 'package:sen/features/register/manager/register_state.dart';
 import 'package:sen/features/teacher_home/view/teacher_home_screen.dart';
 import 'package:sen/features/therapist_home/view/therapist_home_screen.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 import 'package:sen/utils/app_toast.dart';
@@ -69,8 +70,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 }
               },
               icon: Icon(
-                Icons.arrow_circle_left_rounded,
-                size: 40.r,
+                Icons.arrow_back_ios_new_rounded,
+                size: 25.r,
                 color: AppColors.primary,
               ),
             ),
@@ -118,16 +119,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Who Are You?",
+            S().whoAreYou,
             style: TextStyle(
-              color: Colors.black,
               fontSize: 22.sp,
+              fontWeight: FontWeight.w800,
               fontFamily: AppFonts.mainFont,
             ),
           ),
           SizedBox(height: 15.h),
           Text(
-            "Please choose your role to continue.",
+            S().pleaseChooseYourRole,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
@@ -149,7 +150,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: EdgeInsets.all(15.r),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: AppColors.textFormFieldFill,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? AppColors.textFormFieldFillLight
+                          : AppColors.textFormFieldFillDark,
                       border: Border.all(
                         color: AppColors.textFormFieldBorder,
                         width: 2.5.w,
@@ -163,10 +166,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fit: BoxFit.contain,
                         ),
                         Text(
-                          "Parent",
+                          S().parent,
                           style: TextStyle(
-                            color: Colors.black,
                             fontSize: 22.sp,
+                            fontWeight: FontWeight.w800,
                             fontFamily: AppFonts.mainFont,
                           ),
                         ),
@@ -186,7 +189,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: EdgeInsets.all(15.r),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: AppColors.textFormFieldFill,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? AppColors.textFormFieldFillLight
+                          : AppColors.textFormFieldFillDark,
                       border: Border.all(
                         color: AppColors.textFormFieldBorder,
                         width: 2.5.w,
@@ -200,10 +205,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fit: BoxFit.contain,
                         ),
                         Text(
-                          "Teacher",
+                          S().teacher,
                           style: TextStyle(
-                            color: Colors.black,
                             fontSize: 22.sp,
+                            fontWeight: FontWeight.w800,
                             fontFamily: AppFonts.mainFont,
                           ),
                         ),
@@ -227,7 +232,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: EdgeInsets.all(15.r),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: AppColors.textFormFieldFill,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? AppColors.textFormFieldFillLight
+                          : AppColors.textFormFieldFillDark,
                       border: Border.all(
                         color: AppColors.textFormFieldBorder,
                         width: 2.5.w,
@@ -241,10 +248,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fit: BoxFit.contain,
                         ),
                         Text(
-                          "Therapist",
+                          S().therapist,
                           style: TextStyle(
-                            color: Colors.black,
                             fontSize: 22.sp,
+                            fontWeight: FontWeight.w800,
                             fontFamily: AppFonts.mainFont,
                           ),
                         ),
@@ -273,10 +280,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "How did you hear about SEN?",
+                S().howDidYouHearAboutSEN,
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 22.sp,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
@@ -293,7 +300,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: BoxDecoration(
                     color: cubit.mediaIndex == 1
                         ? AppColors.primaryBackground
-                        : AppColors.background,
+                        : Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(16.r),
                       topLeft: Radius.circular(16.r),
@@ -306,10 +315,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "Facebook/Instgram",
+                    S().facebookInstagram,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -327,7 +336,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: BoxDecoration(
                     color: cubit.mediaIndex == 2
                         ? AppColors.primaryBackground
-                        : AppColors.background,
+                        : Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                     border: cubit.mediaIndex == 2
                         ? Border.all(
                             color: AppColors.primary,
@@ -355,10 +366,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                   ),
                   child: Text(
-                    "YouTube",
+                    S().youTube,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -376,7 +387,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: BoxDecoration(
                     color: cubit.mediaIndex == 3
                         ? AppColors.primaryBackground
-                        : AppColors.background,
+                        : Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                     border: cubit.mediaIndex == 3
                         ? Border.all(
                             color: AppColors.primary,
@@ -404,10 +417,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                   ),
                   child: Text(
-                    "Teacher/school",
+                    S().teacherSchool,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -425,7 +438,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: BoxDecoration(
                     color: cubit.mediaIndex == 4
                         ? AppColors.primaryBackground
-                        : AppColors.background,
+                        : Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                     border: cubit.mediaIndex == 4
                         ? Border.all(
                             color: AppColors.primary,
@@ -453,10 +468,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                   ),
                   child: Text(
-                    "Friends/family",
+                    S().friendsFamily,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -474,7 +489,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: BoxDecoration(
                     color: cubit.mediaIndex == 5
                         ? AppColors.primaryBackground
-                        : AppColors.background,
+                        : Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.r),
                       bottomRight: Radius.circular(16.r),
@@ -506,10 +523,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                   ),
                   child: Text(
-                    "Other",
+                    S().other,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -536,12 +553,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color: cubit.mediaIndex == 0
                           ? AppColors.textGrey
                           : Colors.white,
                       fontSize: 20.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -556,11 +574,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Create an account to track your child's progress",
+            S().createAnAccountToTrack,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
               fontSize: 22.sp,
+              fontWeight: FontWeight.w800,
               fontFamily: AppFonts.mainFont,
             ),
           ),
@@ -571,7 +589,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             textInputAction: TextInputAction.done,
             cursorColor: AppColors.primary,
             style: const TextStyle(
-              color: Colors.black,
+              fontWeight: FontWeight.w800,
               fontFamily: AppFonts.mainFont,
             ),
             onChanged: (value) {
@@ -583,14 +601,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               BlocProvider.of<AppManagerCubit>(context).onTextFormFieldChange();
             },
             decoration: InputDecoration(
-              hintText: "Email address",
+              hintText: S().emailAddress,
               hintStyle: TextStyle(
-                color: Colors.grey,
                 fontSize: 18.sp,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
               filled: true,
-              fillColor: AppColors.textFormFieldFill,
+              fillColor: Theme.of(context).brightness == Brightness.light
+                  ? AppColors.textFormFieldFillLight
+                  : AppColors.textFormFieldFillDark,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(16.r),
@@ -634,11 +654,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color:
                           cubit.validEmail ? Colors.white : AppColors.textGrey,
                       fontSize: 20.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -652,15 +673,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "By signing in to SEN, you agree to our ",
+                  text: S().bySigning,
                   style: TextStyle(
-                    color: AppColors.textGrey,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textGrey
+                        : Colors.white,
                     fontSize: 17.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 TextSpan(
-                  text: "Terms ",
+                  text: S().terms,
                   style: TextStyle(
                     color: AppColors.primary,
                     fontSize: 17.sp,
@@ -669,15 +692,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 TextSpan(
-                  text: "and ",
+                  text: S().and,
                   style: TextStyle(
-                    color: AppColors.textGrey,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textGrey
+                        : Colors.white,
                     fontSize: 17.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 TextSpan(
-                  text: "Privacy Policy",
+                  text: S().privacyPolicy,
                   style: TextStyle(
                     color: AppColors.primary,
                     fontSize: 17.sp,
@@ -700,10 +725,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             fit: BoxFit.fitWidth,
           ),
           Text(
-            "Create a password",
+            S().createAPassword,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
               fontSize: 22.sp,
               fontFamily: AppFonts.mainFont,
             ),
@@ -719,7 +743,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textInputAction: TextInputAction.done,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
                 onChanged: (value) {
@@ -727,7 +750,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       .onTextFormFieldChange();
                 },
                 decoration: InputDecoration(
-                  hintText: "Password",
+                  hintText: S().password,
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 18.sp,
@@ -748,7 +771,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   filled: true,
-                  fillColor: AppColors.textFormFieldFill,
+                  fillColor: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
                     borderSide: BorderSide(
@@ -792,7 +817,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color: cubit.parentPasswordController.text.length > 6
                           ? Colors.white
@@ -817,17 +842,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             fit: BoxFit.fitWidth,
           ),
           Text(
-            "Are you a grown-up?",
+            S().areYouAGrownUp,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
               fontSize: 22.sp,
               fontFamily: AppFonts.mainFont,
             ),
           ),
           SizedBox(height: 15.h),
           Text(
-            "We want to keep kids safe! Only an adult should create an account.",
+            S().weWantToKeepKidsSafe,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
@@ -845,7 +869,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textInputAction: TextInputAction.done,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
                 onChanged: (value) {
@@ -853,14 +876,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       .onTextFormFieldChange();
                 },
                 decoration: InputDecoration(
-                  hintText: "Age",
+                  hintText: S().age,
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 18.sp,
                     fontFamily: AppFonts.mainFont,
                   ),
                   filled: true,
-                  fillColor: AppColors.textFormFieldFill,
+                  fillColor: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
                     borderSide: BorderSide(
@@ -906,7 +931,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color:
                           (int.tryParse(cubit.parentAgeController.text) ?? 0) >=
@@ -933,17 +958,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             fit: BoxFit.fitWidth,
           ),
           Text(
-            "What is your child's name?",
+            S().whatIsYourChildName,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
               fontSize: 22.sp,
               fontFamily: AppFonts.mainFont,
             ),
           ),
           SizedBox(height: 15.h),
           Text(
-            "They'll learn how to write it themselves!",
+            S().theyLearnHowToWriteItThemselves,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
@@ -961,7 +985,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textInputAction: TextInputAction.done,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
                 onChanged: (value) {
@@ -969,14 +992,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       .onTextFormFieldChange();
                 },
                 decoration: InputDecoration(
-                  hintText: "Name",
+                  hintText: S().name,
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 18.sp,
                     fontFamily: AppFonts.mainFont,
                   ),
                   filled: true,
-                  fillColor: AppColors.textFormFieldFill,
+                  fillColor: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
                     borderSide: BorderSide(
@@ -1019,7 +1044,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color: cubit.childNameController.text.length > 2
                           ? Colors.white
@@ -1044,17 +1069,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             fit: BoxFit.fitWidth,
           ),
           Text(
-            "How old is ${cubit.childNameController.text}?",
+            "${S().howOldIs}${cubit.childNameController.text}${S().questionMark}",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
               fontSize: 22.sp,
               fontFamily: AppFonts.mainFont,
             ),
           ),
           SizedBox(height: 15.h),
           Text(
-            "We'll personalize the experience for this age.",
+            S().wePersonalizeTheExperienceForThisAge,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
@@ -1072,7 +1096,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textInputAction: TextInputAction.done,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
                 onChanged: (value) {
@@ -1080,14 +1103,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       .onTextFormFieldChange();
                 },
                 decoration: InputDecoration(
-                  hintText: "Age",
+                  hintText: S().age,
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 18.sp,
                     fontFamily: AppFonts.mainFont,
                   ),
                   filled: true,
-                  fillColor: AppColors.textFormFieldFill,
+                  fillColor: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
                     borderSide: BorderSide(
@@ -1130,7 +1155,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color: cubit.childAgeController.text.isNotEmpty
                           ? Colors.white
@@ -1155,17 +1180,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             fit: BoxFit.fitWidth,
           ),
           Text(
-            "What is ${cubit.childNameController.text} Grade?",
+            "${S().inWhichGrade}${cubit.childNameController.text} ${S().questionMark}",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
               fontSize: 22.sp,
               fontFamily: AppFonts.mainFont,
             ),
           ),
           SizedBox(height: 15.h),
           Text(
-            "We'll personalize the experience for this grade.",
+            S().wePersonalizeTheExperienceForThisGrade,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
@@ -1183,7 +1207,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textInputAction: TextInputAction.done,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
                 onChanged: (value) {
@@ -1191,14 +1214,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       .onTextFormFieldChange();
                 },
                 decoration: InputDecoration(
-                  hintText: "Grade",
+                  hintText: S().grade,
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 18.sp,
                     fontFamily: AppFonts.mainFont,
                   ),
                   filled: true,
-                  fillColor: AppColors.textFormFieldFill,
+                  fillColor: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
                     borderSide: BorderSide(
@@ -1241,7 +1266,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color: cubit.childGradeController.text.isNotEmpty
                           ? Colors.white
@@ -1269,17 +1294,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 fit: BoxFit.fitWidth,
               ),
               Text(
-                "What are the difficulties ${cubit.childNameController.text} faces?",
+                "${S().whichDifficultiesFace} ${cubit.childNameController.text} ${S().questionMark}",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 22.sp,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
               SizedBox(height: 15.h),
               Text(
-                "We'll personalize the experience for this difficulties.",
+                S().wePersonalizeTheExperienceForTheseDifficulties,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.grey,
@@ -1300,7 +1324,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: BoxDecoration(
                     color: cubit.difficultiesIndex == 1
                         ? AppColors.primaryBackground
-                        : AppColors.background,
+                        : Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(16.r),
                       topLeft: Radius.circular(16.r),
@@ -1313,9 +1339,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "Conduct disorder",
+                    S().conductDisorder,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
                       fontFamily: AppFonts.mainFont,
                     ),
@@ -1334,7 +1359,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: BoxDecoration(
                     color: cubit.difficultiesIndex == 2
                         ? AppColors.primaryBackground
-                        : AppColors.background,
+                        : Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.r),
                       bottomRight: Radius.circular(16.r),
@@ -1366,9 +1393,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                   ),
                   child: Text(
-                    "Learning difficulties",
+                    S().learningDifficulties,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
                       fontFamily: AppFonts.mainFont,
                     ),
@@ -1396,7 +1422,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color: cubit.difficultiesIndex != 0
                           ? Colors.white
@@ -1416,10 +1442,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Choose a character for ${cubit.childNameController.text}",
+            "${S().chooseAnAvatarFor} ${cubit.childNameController.text}",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
               fontSize: 22.sp,
               fontFamily: AppFonts.mainFont,
             ),
@@ -1473,7 +1498,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   child: Text(
-                    "CONTINUE",
+                    S().continueQ,
                     style: TextStyle(
                       color: cubit.childAvatar.isNotEmpty
                           ? Colors.white
@@ -1498,9 +1523,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          "Enter your details",
+          S().enterYourDetails,
           style: TextStyle(
-            color: Colors.black,
             fontSize: 25.sp,
             fontFamily: AppFonts.mainFont,
           ),
@@ -1512,18 +1536,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
           textInputAction: TextInputAction.next,
           cursorColor: AppColors.primary,
           style: const TextStyle(
-            color: Colors.black,
             fontFamily: AppFonts.mainFont,
           ),
           decoration: InputDecoration(
-            hintText: "Email address",
+            hintText: S().emailAddress,
             hintStyle: TextStyle(
               color: Colors.grey,
               fontSize: 18.sp,
               fontFamily: AppFonts.mainFont,
             ),
             filled: true,
-            fillColor: AppColors.textFormFieldFill,
+            fillColor: Theme.of(context).brightness == Brightness.light
+                ? AppColors.textFormFieldFillLight
+                : AppColors.textFormFieldFillDark,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16.r),
@@ -1547,9 +1572,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
         Container(
-          decoration: const BoxDecoration(
-            color: AppColors.textFormFieldFill,
-            border: Border(
+          decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.light
+                ? AppColors.textFormFieldFillLight
+                : AppColors.textFormFieldFillDark,
+            border: const Border(
               right: BorderSide(
                 color: AppColors.textFormFieldBorder,
                 width: 2.5,
@@ -1570,11 +1597,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
             textInputAction: TextInputAction.next,
             cursorColor: AppColors.primary,
             style: const TextStyle(
-              color: Colors.black,
               fontFamily: AppFonts.mainFont,
             ),
             decoration: InputDecoration(
-              hintText: "Name",
+              filled: true,
+              fillColor: Theme.of(context).brightness == Brightness.light
+                  ? AppColors.textFormFieldFillLight
+                  : AppColors.textFormFieldFillDark,
+              hintText: S().name,
               hintStyle: TextStyle(
                 color: Colors.grey,
                 fontSize: 18.sp,
@@ -1598,7 +1628,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           builder: (context, state) {
             return Container(
               decoration: BoxDecoration(
-                color: AppColors.textFormFieldFill,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? AppColors.textFormFieldFillLight
+                    : AppColors.textFormFieldFillDark,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16.r),
                   bottomRight: Radius.circular(16.r),
@@ -1625,11 +1657,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textInputAction: TextInputAction.done,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
                 decoration: InputDecoration(
-                  hintText: "Password",
+                  hintText: S().password,
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 18.sp,
@@ -1666,9 +1697,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
         SizedBox(height: 15.h),
         Text(
-          "Subject",
+          S().subject,
           style: TextStyle(
-            color: Colors.black,
             fontSize: 20.sp,
             fontFamily: AppFonts.mainFont,
           ),
@@ -1684,9 +1714,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ButtonSegment(
                   value: "Math",
                   label: Text(
-                    "Math",
+                    S().math,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
                       fontFamily: AppFonts.mainFont,
                     ),
@@ -1695,9 +1724,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ButtonSegment(
                   value: "English",
                   label: Text(
-                    "English",
+                    S().english,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
                       fontFamily: AppFonts.mainFont,
                     ),
@@ -1706,9 +1734,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ButtonSegment(
                   value: "Arabic",
                   label: Text(
-                    "Arabic",
+                    S().arabic,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 18.sp,
                       fontFamily: AppFonts.mainFont,
                     ),
@@ -1738,7 +1765,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
             child: Text(
-              "CONTINUE",
+              S().continueQ,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20.sp,
@@ -1756,9 +1783,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          "Enter your details",
+          S().enterYourDetails,
           style: TextStyle(
-            color: Colors.black,
             fontSize: 25.sp,
             fontFamily: AppFonts.mainFont,
           ),
@@ -1770,18 +1796,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
           textInputAction: TextInputAction.next,
           cursorColor: AppColors.primary,
           style: const TextStyle(
-            color: Colors.black,
             fontFamily: AppFonts.mainFont,
           ),
           decoration: InputDecoration(
-            hintText: "Email address",
+            hintText: S().emailAddress,
             hintStyle: TextStyle(
               color: Colors.grey,
               fontSize: 18.sp,
               fontFamily: AppFonts.mainFont,
             ),
             filled: true,
-            fillColor: AppColors.textFormFieldFill,
+            fillColor: Theme.of(context).brightness == Brightness.light
+                ? AppColors.textFormFieldFillLight
+                : AppColors.textFormFieldFillDark,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16.r),
@@ -1805,9 +1832,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
         Container(
-          decoration: const BoxDecoration(
-            color: AppColors.textFormFieldFill,
-            border: Border(
+          decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.light
+                ? AppColors.textFormFieldFillLight
+                : AppColors.textFormFieldFillDark,
+            border: const Border(
               right: BorderSide(
                 color: AppColors.textFormFieldBorder,
                 width: 2.5,
@@ -1828,11 +1857,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             textInputAction: TextInputAction.next,
             cursorColor: AppColors.primary,
             style: const TextStyle(
-              color: Colors.black,
               fontFamily: AppFonts.mainFont,
             ),
             decoration: InputDecoration(
-              hintText: "Name",
+              hintText: S().name,
               hintStyle: TextStyle(
                 color: Colors.grey,
                 fontSize: 18.sp,
@@ -1856,7 +1884,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           builder: (context, state) {
             return Container(
               decoration: BoxDecoration(
-                color: AppColors.textFormFieldFill,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? AppColors.textFormFieldFillLight
+                    : AppColors.textFormFieldFillDark,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16.r),
                   bottomRight: Radius.circular(16.r),
@@ -1883,11 +1913,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textInputAction: TextInputAction.done,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
                 decoration: InputDecoration(
-                  hintText: "Password",
+                  hintText: S().password,
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 18.sp,
@@ -1937,7 +1966,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
             child: Text(
-              "CONTINUE",
+              S().continueQ,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20.sp,

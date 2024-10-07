@@ -5,6 +5,7 @@ import 'package:sen/features/add_quiz/Manager/add_quiz_cubit.dart';
 import 'package:sen/features/add_quiz/Manager/add_quiz_state.dart';
 import 'package:sen/features/app_manager/app_manager_cubit.dart';
 import 'package:sen/features/app_manager/app_manager_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 import 'package:sen/utils/app_toast.dart';
@@ -40,16 +41,17 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                 Navigator.pop(context);
               },
               icon: Icon(
-                Icons.arrow_circle_left_rounded,
-                size: 40.r,
+                Icons.arrow_back_ios_new_rounded,
+                size: 25.r,
                 color: AppColors.primary,
               ),
             ),
             title: Text(
-              "Add Quiz",
+              S().addQuiz,
               style: TextStyle(
                 color: AppColors.primary,
                 fontSize: 30.sp,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),
@@ -68,10 +70,9 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    "Level",
+                    S().level,
                     style: TextStyle(
                       fontSize: 20.sp,
-                      color: Colors.black,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -89,9 +90,8 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                           ButtonSegment(
                             value: "1",
                             label: Text(
-                              "Level 1",
+                              "${S().level} 1",
                               style: TextStyle(
-                                color: Colors.black,
                                 fontSize: 18.sp,
                                 fontFamily: AppFonts.mainFont,
                               ),
@@ -100,9 +100,8 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                           ButtonSegment(
                             value: "2",
                             label: Text(
-                              "Level 2",
+                              "${S().level} 2",
                               style: TextStyle(
-                                color: Colors.black,
                                 fontSize: 18.sp,
                                 fontFamily: AppFonts.mainFont,
                               ),
@@ -111,9 +110,8 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                           ButtonSegment(
                             value: "3",
                             label: Text(
-                              "Level 3",
+                              "${S().level} 3",
                               style: TextStyle(
-                                color: Colors.black,
                                 fontSize: 18.sp,
                                 fontFamily: AppFonts.mainFont,
                               ),
@@ -122,9 +120,8 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                           ButtonSegment(
                             value: "4",
                             label: Text(
-                              "Level 4",
+                              "${S().level} 4",
                               style: TextStyle(
-                                color: Colors.black,
                                 fontSize: 18.sp,
                                 fontFamily: AppFonts.mainFont,
                               ),
@@ -143,10 +140,9 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                 ),
                 SizedBox(height: 15.h),
                 Text(
-                  "Title",
+                  S().title,
                   style: TextStyle(
                     fontSize: 20.sp,
-                    color: Colors.black,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -157,12 +153,13 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                   textInputAction: TextInputAction.done,
                   cursorColor: AppColors.primary,
                   style: const TextStyle(
-                    color: Colors.black,
                     fontFamily: AppFonts.mainFont,
                   ),
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: AppColors.textFormFieldFill,
+                    fillColor: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textFormFieldFillLight
+                        : AppColors.textFormFieldFillDark,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.r),
@@ -185,10 +182,10 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                 ),
                 SizedBox(height: 15.h),
                 Text(
-                  "Description",
+                  S().description,
                   style: TextStyle(
                     fontSize: 20.sp,
-                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -199,13 +196,14 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                   textInputAction: TextInputAction.done,
                   cursorColor: AppColors.primary,
                   style: const TextStyle(
-                    color: Colors.black,
                     fontFamily: AppFonts.mainFont,
                   ),
                   textAlignVertical: TextAlignVertical.top,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: AppColors.textFormFieldFill,
+                    fillColor: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textFormFieldFillLight
+                        : AppColors.textFormFieldFillDark,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.r),
@@ -246,7 +244,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                             ),
                           ),
                           label: Text(
-                            'QUESTION',
+                            S().questionU,
                             style: TextStyle(
                               fontSize: 16.sp,
                               color: Colors.white,
@@ -277,7 +275,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                                 ),
                               ),
                               label: Text(
-                                'UPLOAD',
+                                S().upload,
                                 style: TextStyle(
                                   fontSize: 16.sp,
                                   color: Colors.white,
@@ -327,7 +325,9 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
               padding: EdgeInsets.all(15.r),
               margin: EdgeInsets.only(bottom: 15.h),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.white
+                    : AppColors.textFormFieldFillDark,
                 borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
                   color: AppColors.textFormFieldBorder,
@@ -357,10 +357,10 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                     ),
                   ),
                   Text(
-                    'Question :',
+                    '${S().question} :',
                     style: TextStyle(
                       fontSize: 18.sp,
-                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -373,12 +373,13 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                     textInputAction: TextInputAction.done,
                     cursorColor: AppColors.primary,
                     style: const TextStyle(
-                      color: Colors.black,
                       fontFamily: AppFonts.mainFont,
                     ),
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: AppColors.textFormFieldFill,
+                      fillColor: Theme.of(context).brightness == Brightness.light
+                          ? AppColors.textFormFieldFillLight
+                          : AppColors.textFormFieldFillDark,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(16.r),
@@ -401,10 +402,10 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                   ),
                   SizedBox(height: 15.h),
                   Text(
-                    'Answers :',
+                    '${S().answers} :',
                     style: TextStyle(
                       fontSize: 18.sp,
-                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -437,12 +438,13 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                           textInputAction: TextInputAction.done,
                           cursorColor: AppColors.primary,
                           style: const TextStyle(
-                            color: Colors.black,
                             fontFamily: AppFonts.mainFont,
                           ),
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: AppColors.textFormFieldFill,
+                            fillColor: Theme.of(context).brightness == Brightness.light
+                                ? AppColors.textFormFieldFillLight
+                                : AppColors.textFormFieldFillDark,
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(16.r),
@@ -466,6 +468,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 15.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -494,12 +497,13 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                           textInputAction: TextInputAction.done,
                           cursorColor: AppColors.primary,
                           style: const TextStyle(
-                            color: Colors.black,
                             fontFamily: AppFonts.mainFont,
                           ),
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: AppColors.textFormFieldFill,
+                            fillColor: Theme.of(context).brightness == Brightness.light
+                                ? AppColors.textFormFieldFillLight
+                                : AppColors.textFormFieldFillDark,
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(16.r),
@@ -523,6 +527,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 15.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -551,12 +556,13 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                           textInputAction: TextInputAction.done,
                           cursorColor: AppColors.primary,
                           style: const TextStyle(
-                            color: Colors.black,
                             fontFamily: AppFonts.mainFont,
                           ),
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: AppColors.textFormFieldFill,
+                            fillColor: Theme.of(context).brightness == Brightness.light
+                                ? AppColors.textFormFieldFillLight
+                                : AppColors.textFormFieldFillDark,
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(16.r),
@@ -580,6 +586,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 15.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -608,12 +615,13 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                           textInputAction: TextInputAction.done,
                           cursorColor: AppColors.primary,
                           style: const TextStyle(
-                            color: Colors.black,
                             fontFamily: AppFonts.mainFont,
                           ),
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: AppColors.textFormFieldFill,
+                            fillColor: Theme.of(context).brightness == Brightness.light
+                                ? AppColors.textFormFieldFillLight
+                                : AppColors.textFormFieldFillDark,
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(16.r),
@@ -655,7 +663,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                               ),
                             ),
                             label: Text(
-                              'ATTACH',
+                              S().attach,
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 color: Colors.white,
@@ -682,7 +690,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                               ),
                             ),
                             label: Text(
-                              'Delete',
+                              S().delete,
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 color: Colors.white,
@@ -717,7 +725,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
   }
 
   void onQuizUploadSuccess() {
-    displayToast('Quiz Uploaded');
+    displayToast(S().quizUploaded);
     Navigator.pop(context);
   }
 }

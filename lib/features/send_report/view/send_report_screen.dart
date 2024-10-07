@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/send_report/manager/send_report_cubit.dart';
 import 'package:sen/features/send_report/manager/send_report_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/models/student.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
@@ -50,16 +51,17 @@ class _SendReportScreenState extends State<SendReportScreen> {
                 Navigator.pop(context);
               },
               icon: Icon(
-                Icons.arrow_circle_left_rounded,
-                size: 40.r,
+                Icons.arrow_back_ios_new_rounded,
+                size: 25.r,
                 color: AppColors.primary,
               ),
             ),
             title: Text(
-              "Report",
+              S().report,
               style: TextStyle(
                 color: AppColors.primary,
                 fontSize: 30.sp,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),
@@ -78,10 +80,10 @@ class _SendReportScreenState extends State<SendReportScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Subject",
+                    S().subjectR,
                     style: TextStyle(
                       fontSize: 20.sp,
-                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -92,12 +94,14 @@ class _SendReportScreenState extends State<SendReportScreen> {
                     textInputAction: TextInputAction.next,
                     cursorColor: AppColors.primary,
                     style: const TextStyle(
-                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: AppColors.textFormFieldFill,
+                      fillColor: Theme.of(context).brightness == Brightness.light
+                          ? AppColors.textFormFieldFillLight
+                          : AppColors.textFormFieldFillDark,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(16.r),
@@ -120,10 +124,10 @@ class _SendReportScreenState extends State<SendReportScreen> {
                   ),
                   SizedBox(height: 15.h),
                   Text(
-                    "Content",
+                    S().content,
                     style: TextStyle(
                       fontSize: 20.sp,
-                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -135,7 +139,7 @@ class _SendReportScreenState extends State<SendReportScreen> {
                       textInputAction: TextInputAction.done,
                       cursorColor: AppColors.primary,
                       style: const TextStyle(
-                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                       maxLines: null,
@@ -143,7 +147,9 @@ class _SendReportScreenState extends State<SendReportScreen> {
                       textAlignVertical: TextAlignVertical.top,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: AppColors.textFormFieldFill,
+                        fillColor: Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textFormFieldFillLight
+                            : AppColors.textFormFieldFillDark,
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(16.r),
@@ -180,10 +186,11 @@ class _SendReportScreenState extends State<SendReportScreen> {
                         ),
                       ),
                       child: Text(
-                        "SEND",
+                        S().send,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.sp,
+                          fontWeight: FontWeight.w800,
                           fontFamily: AppFonts.mainFont,
                         ),
                       ),
@@ -199,7 +206,7 @@ class _SendReportScreenState extends State<SendReportScreen> {
   }
 
   void onSendReportSuccess() {
-    displayToast("Report Sent");
+    displayToast(S().reportSent);
     Navigator.pop(context);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/models/lesson.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
@@ -42,8 +43,8 @@ class _LessonReadScreenState extends State<LessonReadScreen> {
             Navigator.pop(context);
           },
           icon: Icon(
-            Icons.arrow_circle_left_rounded,
-            size: 40.r,
+            Icons.arrow_back_ios_new_rounded,
+            size: 25.r,
             color: AppColors.primary,
           ),
         ),
@@ -52,6 +53,7 @@ class _LessonReadScreenState extends State<LessonReadScreen> {
           style: TextStyle(
             color: AppColors.primary,
             fontSize: 30.sp,
+            fontWeight: FontWeight.w800,
             fontFamily: AppFonts.mainFont,
           ),
         ),
@@ -73,10 +75,10 @@ class _LessonReadScreenState extends State<LessonReadScreen> {
             ),
             SizedBox(height: 20.h),
             Text(
-              "Description :",
+              "${S().description} :",
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 20.sp,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),
@@ -85,7 +87,10 @@ class _LessonReadScreenState extends State<LessonReadScreen> {
               widget.lesson.description,
               style: TextStyle(
                 fontSize: 18.sp,
-                color: AppColors.textGrey,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? AppColors.textGrey
+                    : Colors.white,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),

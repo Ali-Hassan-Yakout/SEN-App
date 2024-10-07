@@ -5,6 +5,7 @@ import 'package:sen/features/app_manager/app_manager_cubit.dart';
 import 'package:sen/features/app_manager/app_manager_state.dart';
 import 'package:sen/features/quiz_attempt/manager/quiz_attempt_cubit.dart';
 import 'package:sen/features/quiz_attempt/manager/quiz_attempt_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/models/quiz.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
@@ -47,8 +48,8 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                 Navigator.pop(context);
               },
               icon: Icon(
-                Icons.arrow_circle_left_rounded,
-                size: 40.r,
+                Icons.arrow_back_ios_new_rounded,
+                size: 25.r,
                 color: AppColors.primary,
               ),
             ),
@@ -78,7 +79,9 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                   bottom: 15.h,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.white
+                      : AppColors.textFormFieldFillDark,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
                     color: AppColors.textFormFieldBorder,
@@ -91,7 +94,6 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                       widget.quiz.title,
                       style: TextStyle(
                         fontSize: 20.sp,
-                        color: Colors.black,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
@@ -174,10 +176,9 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                       ),
               ),
               Text(
-                'Question :',
+                '${S().question} :',
                 style: TextStyle(
                   fontSize: 20.sp,
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
@@ -186,16 +187,14 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                 widget.quiz.questions[index].question,
                 style: TextStyle(
                   fontSize: 18.sp,
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
               SizedBox(height: 15.h),
               Text(
-                'Answers :',
+                '${S().answers} :',
                 style: TextStyle(
                   fontSize: 20.sp,
-                  color: Colors.black,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
@@ -217,7 +216,7 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                       decoration: BoxDecoration(
                         color: cubit.answers[index] == 0
                             ? AppColors.primaryBackground
-                            : AppColors.textFormFieldFill,
+                            : AppColors.textFormFieldFillLight,
                         borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
                           color: cubit.answers[index] == 0
@@ -255,7 +254,7 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                       decoration: BoxDecoration(
                         color: cubit.answers[index] == 1
                             ? AppColors.primaryBackground
-                            : AppColors.textFormFieldFill,
+                            : AppColors.textFormFieldFillLight,
                         borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
                           color: cubit.answers[index] == 1
@@ -293,7 +292,7 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                       decoration: BoxDecoration(
                         color: cubit.answers[index] == 2
                             ? AppColors.primaryBackground
-                            : AppColors.textFormFieldFill,
+                            : AppColors.textFormFieldFillLight,
                         borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
                           color: cubit.answers[index] == 2
@@ -331,7 +330,7 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
                       decoration: BoxDecoration(
                         color: cubit.answers[index] == 3
                             ? AppColors.primaryBackground
-                            : AppColors.textFormFieldFill,
+                            : AppColors.textFormFieldFillLight,
                         borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
                           color: cubit.answers[index] == 3

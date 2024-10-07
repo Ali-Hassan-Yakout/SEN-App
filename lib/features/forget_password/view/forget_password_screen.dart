@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sen/features/forget_password/manager/forget_password_cubit.dart';
 import 'package:sen/features/forget_password/manager/forget_password_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 import 'package:sen/utils/app_toast.dart';
@@ -55,16 +56,16 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     fit: BoxFit.fitWidth,
                   ),
                   Text(
-                    "Forgot password?",
+                    S().forgotPasswordQ,
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 25.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
                   SizedBox(height: 15.h),
                   Text(
-                    "Enter your email address to receive a link to reset your password.",
+                    S().enterYourEmail,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.grey,
@@ -79,18 +80,21 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     textInputAction: TextInputAction.done,
                     cursorColor: AppColors.primary,
                     style: const TextStyle(
-                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                     decoration: InputDecoration(
-                      hintText: "Email address",
+                      hintText: S().emailAddress,
                       hintStyle: TextStyle(
                         color: Colors.grey,
                         fontSize: 18.sp,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                       filled: true,
-                      fillColor: AppColors.textFormFieldFill,
+                      fillColor: Theme.of(context).brightness == Brightness.light
+                          ? AppColors.textFormFieldFillLight
+                          : AppColors.textFormFieldFillDark,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(16.r),
@@ -126,10 +130,11 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         ),
                       ),
                       child: Text(
-                        "SUBMIT",
+                        S().submit,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.sp,
+                          fontWeight: FontWeight.w800,
                           fontFamily: AppFonts.mainFont,
                         ),
                       ),
@@ -145,7 +150,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   }
 
   void onResetPasswordSuccess() {
-    displayToast("Check your inbox");
+    displayToast(S().checkYourInbox);
     Navigator.pop(context);
   }
 }

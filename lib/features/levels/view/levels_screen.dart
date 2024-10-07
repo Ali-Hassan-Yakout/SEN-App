@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/all_grades/view/all_grades_screen.dart';
 import 'package:sen/features/all_lessons/view/all_lessons_screen.dart';
 import 'package:sen/features/all_quizzes/view/all_quizzes_screen.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 
@@ -25,16 +26,17 @@ class LevelsScreen extends StatelessWidget {
             Navigator.pop(context);
           },
           icon: Icon(
-            Icons.arrow_circle_left_rounded,
-            size: 40.r,
+            Icons.arrow_back_ios_new_rounded,
+            size: 25.r,
             color: AppColors.primary,
           ),
         ),
         title: Text(
-          "Levels",
+          S().levels,
           style: TextStyle(
             color: AppColors.primary,
             fontSize: 30.sp,
+            fontWeight: FontWeight.w800,
             fontFamily: AppFonts.mainFont,
           ),
         ),
@@ -51,12 +53,12 @@ class LevelsScreen extends StatelessWidget {
                 levelItemBuilder(
                   context,
                   "assets/images/level1.png",
-                  "Level 1",
+                  "${S().level} 1",
                 ),
                 levelItemBuilder(
                   context,
                   "assets/images/level2.png",
-                  "Level 2",
+                  "${S().level} 2",
                 ),
               ],
             ),
@@ -67,12 +69,12 @@ class LevelsScreen extends StatelessWidget {
                 levelItemBuilder(
                   context,
                   "assets/images/level3.png",
-                  "Level 3",
+                  "${S().level} 3",
                 ),
                 levelItemBuilder(
                   context,
                   "assets/images/level4.png",
-                  "Level 4",
+                  "${S().level} 4",
                 ),
               ],
             ),
@@ -95,7 +97,7 @@ class LevelsScreen extends StatelessWidget {
               ),
             ),
           );
-        }else if(screen == 'quizzes'){
+        } else if (screen == 'quizzes') {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -105,7 +107,7 @@ class LevelsScreen extends StatelessWidget {
               ),
             ),
           );
-        }else if(screen == 'grades'){
+        } else if (screen == 'grades') {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -123,7 +125,9 @@ class LevelsScreen extends StatelessWidget {
         padding: EdgeInsets.all(15.r),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.white
+              : AppColors.textFormFieldFillDark,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
             color: AppColors.textFormFieldBorder,
@@ -141,6 +145,7 @@ class LevelsScreen extends StatelessWidget {
               style: TextStyle(
                 color: AppColors.primary,
                 fontSize: 20.sp,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),

@@ -3,16 +3,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/database/shared_preferences.dart';
 import 'package:sen/features/app_manager/app_manager_cubit.dart';
+import 'package:sen/features/app_manager/app_manager_state.dart';
 import 'package:sen/features/intro/view/intro_screen.dart';
 import 'package:sen/features/parent_home/view/parent_home_screen.dart';
 import 'package:sen/features/teacher_home/view/teacher_home_screen.dart';
 import 'package:sen/features/therapist_home/view/therapist_home_screen.dart';
-import 'package:sen/utils/app_colors.dart';
+import 'package:sen/generated/l10n.dart';
+import 'package:sen/utils/app_themes.dart';
 
-main()  async {
+main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
@@ -42,17 +45,29 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: BlocProvider(
         create: (context) => AppManagerCubit(),
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            scaffoldBackgroundColor: AppColors.background,
-            appBarTheme: const AppBarTheme(
-              backgroundColor: AppColors.background,
-            ),
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-          ),
-          home: homeScreen(),
+        child: BlocBuilder<AppManagerCubit, AppManagerState>(
+          buildWhen: (previous, current) =>
+              current is LanguageChange || current is ThemeChange,
+          builder: (context, state) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              locale:
+                  Locale(PreferenceUtils.getString(PrefKeys.language, 'en')),
+              supportedLocales: S.delegate.supportedLocales,
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
+              themeMode: PreferenceUtils.getBool(PrefKeys.theme)
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
+              theme: AppThemes.lightTheme,
+              darkTheme: AppThemes.darkTheme,
+              home: homeScreen(),
+            );
+          },
         ),
       ),
     );

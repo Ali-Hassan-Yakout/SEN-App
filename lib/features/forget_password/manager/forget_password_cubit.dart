@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sen/features/forget_password/manager/forget_password_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_connectivity.dart';
 
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
@@ -11,7 +12,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
 
   Future<void> resetPassword() async {
     if (emailController.text.isEmpty) {
-      emit(ResetPasswordFailure("Email can't be blank"));
+      emit(ResetPasswordFailure(S().emailCantBeBlank));
       return;
     }
     try {
@@ -21,9 +22,9 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
       emit(ResetPasswordSuccess());
     } catch (error) {
       if (await AppConnectivity.checkConnection()) {
-        emit(ResetPasswordFailure("Try again later"));
+        emit(ResetPasswordFailure(S().tryAgainLater));
       } else {
-        emit(ResetPasswordFailure("Check Your internet!"));
+        emit(ResetPasswordFailure(S().checkYourInternet));
       }
     }
   }

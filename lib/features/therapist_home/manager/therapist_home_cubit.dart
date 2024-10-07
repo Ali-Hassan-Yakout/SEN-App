@@ -10,12 +10,6 @@ class TherapistHomeCubit extends Cubit<TherapistHomeState> {
   TherapistHomeCubit() : super(TherapistHomeInitial());
 
   int pageIndex = 0;
-  List<String> appBarTitles = [
-    "Lessons",
-    "Quizzes",
-    "Grades",
-    "Reports",
-  ];
   List<Widget> pages = [
     const LessonControlScreen(),
     const QuizControlScreen(),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sen/database/shared_preferences.dart';
 import 'package:sen/features/register/manager/register_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_connectivity.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
@@ -45,15 +46,15 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(RegisterSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        emit(RegisterFailure('The password provided is too weak.'));
+        emit(RegisterFailure(S().thePasswordProvided));
       } else if (e.code == 'email-already-in-use') {
-        emit(RegisterFailure('The account already exists for that email.'));
+        emit(RegisterFailure(S().theAccountAlready));
       }
     } catch (e) {
       if (await AppConnectivity.checkConnection()) {
         emit(RegisterFailure(e.toString()));
       } else {
-        emit(RegisterFailure('Check Your internet!'));
+        emit(RegisterFailure(S().checkYourInternet));
       }
     }
   }
@@ -82,7 +83,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         teacherPasswordController.text.isEmpty ||
         teacherNameController.text.isEmpty ||
         teacherSubject.first.isEmpty) {
-      emit(RegisterFailure("Details can't be blank"));
+      emit(RegisterFailure(S().detailsCantBeBlank));
       return;
     }
     try {
@@ -94,15 +95,15 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(RegisterSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        emit(RegisterFailure('The password provided is too weak.'));
+        emit(RegisterFailure(S().thePasswordProvided));
       } else if (e.code == 'email-already-in-use') {
-        emit(RegisterFailure('The account already exists for that email.'));
+        emit(RegisterFailure(S().theAccountAlready));
       }
     } catch (e) {
       if (await AppConnectivity.checkConnection()) {
         emit(RegisterFailure(e.toString()));
       } else {
-        emit(RegisterFailure('Check Your internet!'));
+        emit(RegisterFailure(S().checkYourInternet));
       }
     }
   }
@@ -125,7 +126,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     if (therapistEmailController.text.isEmpty ||
         therapistPasswordController.text.isEmpty ||
         therapistNameController.text.isEmpty) {
-      emit(RegisterFailure("Details can't be blank"));
+      emit(RegisterFailure(S().detailsCantBeBlank));
       return;
     }
     try {
@@ -137,15 +138,15 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(RegisterSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        emit(RegisterFailure('The password provided is too weak.'));
+        emit(RegisterFailure(S().thePasswordProvided));
       } else if (e.code == 'email-already-in-use') {
-        emit(RegisterFailure('The account already exists for that email.'));
+        emit(RegisterFailure(S().theAccountAlready));
       }
     } catch (e) {
       if (await AppConnectivity.checkConnection()) {
         emit(RegisterFailure(e.toString()));
       } else {
-        emit(RegisterFailure('Check Your internet!'));
+        emit(RegisterFailure(S().checkYourInternet));
       }
     }
   }

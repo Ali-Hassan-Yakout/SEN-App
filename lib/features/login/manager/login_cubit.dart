@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sen/database/shared_preferences.dart';
 import 'package:sen/features/login/manager/login_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_connectivity.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -32,7 +33,7 @@ class LoginCubit extends Cubit<LoginState> {
         errorMessage = "Invalid Credentials!";
         emit(LoginFailure());
       } else {
-        errorMessage = "Check Your internet!";
+        errorMessage = S().checkYourInternet;
         emit(LoginFailure());
       }
     }

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/all_students/manager/all_students_cubit.dart';
 import 'package:sen/features/all_students/manager/all_students_state.dart';
 import 'package:sen/features/send_report/view/send_report_screen.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 import 'package:sen/utils/app_toast.dart';
@@ -41,16 +42,17 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                 Navigator.pop(context);
               },
               icon: Icon(
-                Icons.arrow_circle_left_rounded,
-                size: 40.r,
+                Icons.arrow_back_ios_new_rounded,
+                size: 25.r,
                 color: AppColors.primary,
               ),
             ),
             title: Text(
-              "Students",
+              S().students,
               style: TextStyle(
                 color: AppColors.primary,
                 fontSize: 30.sp,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),
@@ -68,20 +70,22 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                   textInputAction: TextInputAction.done,
                   cursorColor: AppColors.primary,
                   style: const TextStyle(
-                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                   decoration: InputDecoration(
                     label: Text(
-                      "Search",
+                      S().search,
                       style: TextStyle(
                         fontSize: 18.sp,
-                        color: AppColors.textGrey,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
                     filled: true,
-                    fillColor: AppColors.textFormFieldFill,
+                    fillColor: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textFormFieldFillLight
+                        : AppColors.textFormFieldFillDark,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.r),
@@ -140,7 +144,9 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
             padding: EdgeInsets.all(15.r),
             margin: EdgeInsets.only(bottom: 15.w),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.white
+                  : AppColors.textFormFieldFillDark,
               border: Border.all(
                 color: AppColors.textFormFieldBorder,
                 width: 2.5.w,
@@ -161,6 +167,7 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                               cubit.students[index].name[0],
                               style: TextStyle(
                                 fontSize: 30.sp,
+                                fontWeight: FontWeight.w800,
                                 fontFamily: AppFonts.mainFont,
                               ),
                             )
@@ -175,37 +182,49 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                             cubit.students[index].name,
                             style: TextStyle(
                               fontSize: 20.sp,
-                              color: Colors.black,
+                              fontWeight: FontWeight.w800,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
                           Text(
                             cubit.students[index].email,
-                            overflow: TextOverflow.fade,
+                            overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             softWrap: false,
                             style: TextStyle(
                               fontSize: 16.sp,
-                              color: AppColors.textGrey,
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? AppColors.textGrey
+                                  : Colors.white,
+                              fontWeight: FontWeight.w800,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
                           Row(
                             children: [
                               Text(
-                                "Grade : ${cubit.students[index].grade}",
+                                "${S().grade} : ${cubit.students[index].grade}",
                                 style: TextStyle(
                                   fontSize: 16.sp,
-                                  color: AppColors.textGrey,
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? AppColors.textGrey
+                                      : Colors.white,
+                                  fontWeight: FontWeight.w800,
                                   fontFamily: AppFonts.mainFont,
                                 ),
                               ),
                               SizedBox(width: 15.w),
                               Text(
-                                "Age : ${cubit.students[index].age}",
+                                "${S().age} : ${cubit.students[index].age}",
                                 style: TextStyle(
                                   fontSize: 16.sp,
-                                  color: AppColors.textGrey,
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? AppColors.textGrey
+                                      : Colors.white,
+                                  fontWeight: FontWeight.w800,
                                   fontFamily: AppFonts.mainFont,
                                 ),
                               ),

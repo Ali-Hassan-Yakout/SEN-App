@@ -85,7 +85,9 @@ class _ReportControlScreenState extends State<ReportControlScreen> {
                   right: 15.w,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.white
+                      : AppColors.textFormFieldFillDark,
                   border: Border.all(
                     color: AppColors.textFormFieldBorder,
                     width: 2.5.w,
@@ -99,7 +101,7 @@ class _ReportControlScreenState extends State<ReportControlScreen> {
                       cubit.reports[index].lastReportDate.split(' ')[0],
                       style: TextStyle(
                         fontSize: 16.sp,
-                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
@@ -114,6 +116,7 @@ class _ReportControlScreenState extends State<ReportControlScreen> {
                                   cubit.reports[index].name[0],
                                   style: TextStyle(
                                     fontSize: 30.sp,
+                                    fontWeight: FontWeight.w800,
                                     fontFamily: AppFonts.mainFont,
                                   ),
                                 )
@@ -128,18 +131,22 @@ class _ReportControlScreenState extends State<ReportControlScreen> {
                                 cubit.reports[index].name,
                                 style: TextStyle(
                                   fontSize: 20.sp,
-                                  color: Colors.black,
+                                  fontWeight: FontWeight.w800,
                                   fontFamily: AppFonts.mainFont,
                                 ),
                               ),
                               Text(
                                 cubit.reports[index].lastReportSubject,
-                                overflow: TextOverflow.fade,
+                                overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
                                 softWrap: false,
                                 style: TextStyle(
                                   fontSize: 16.sp,
-                                  color: AppColors.textGrey,
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? AppColors.textGrey
+                                      : Colors.white,
+                                  fontWeight: FontWeight.w800,
                                   fontFamily: AppFonts.mainFont,
                                 ),
                               ),

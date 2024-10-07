@@ -6,6 +6,7 @@ import 'package:sen/features/app_manager/app_manager_cubit.dart';
 import 'package:sen/features/app_manager/app_manager_state.dart';
 import 'package:sen/features/settings/view/settings_screen.dart';
 import 'package:sen/features/teacher_home/manager/teacher_home_cubit.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 
@@ -21,6 +22,12 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> appBarTitles = [
+      S.of(context).subjects,
+      S.of(context).quizzes,
+      S.of(context).grades,
+      S.of(context).reports,
+    ];
     return BlocProvider(
       create: (context) => cubit,
       child: Scaffold(
@@ -29,10 +36,11 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
             buildWhen: (previous, current) => current is ScreenChange,
             builder: (context, state) {
               return Text(
-                cubit.appBarTitles[cubit.pageIndex],
+                appBarTitles[cubit.pageIndex],
                 style: TextStyle(
                   color: AppColors.primary,
                   fontSize: 30.sp,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               );
@@ -58,7 +66,7 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
           ],
         ),
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: AppColors.background,
+          backgroundColor: Colors.transparent,
           color: AppColors.primaryBackground,
           animationDuration: const Duration(milliseconds: 300),
           onTap: (index) {

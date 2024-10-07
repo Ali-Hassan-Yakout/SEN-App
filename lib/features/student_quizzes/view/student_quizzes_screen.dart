@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/attempt_read/view/attempt_read_screen.dart';
 import 'package:sen/features/student_quizzes/manager/student_quizzes_cubit.dart';
 import 'package:sen/features/student_quizzes/manager/student_quizzes_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 
@@ -39,8 +40,8 @@ class _StudentQuizzesScreenState extends State<StudentQuizzesScreen> {
               Navigator.pop(context);
             },
             icon: Icon(
-              Icons.arrow_circle_left_rounded,
-              size: 40.r,
+              Icons.arrow_back_ios_new_rounded,
+              size: 25.r,
               color: AppColors.primary,
             ),
           ),
@@ -89,7 +90,9 @@ class _StudentQuizzesScreenState extends State<StudentQuizzesScreen> {
                   right: 15.w,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.white
+                      : AppColors.textFormFieldFillDark,
                   border: Border.all(
                     color: AppColors.textFormFieldBorder,
                     width: 2.5.w,
@@ -100,7 +103,7 @@ class _StudentQuizzesScreenState extends State<StudentQuizzesScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Title : ${cubit.quizzes[index].title}",
+                      "${S().title} : ${cubit.quizzes[index].title}",
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontFamily: AppFonts.mainFont,
@@ -108,12 +111,14 @@ class _StudentQuizzesScreenState extends State<StudentQuizzesScreen> {
                     ),
                     Text(
                       cubit.quizzes[index].description,
-                      overflow: TextOverflow.fade,
+                      overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       softWrap: false,
                       style: TextStyle(
                         fontSize: 16.sp,
-                        color: AppColors.textGrey,
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? AppColors.textGrey
+                            : Colors.white,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
@@ -121,19 +126,25 @@ class _StudentQuizzesScreenState extends State<StudentQuizzesScreen> {
                       children: [
                         Expanded(
                           child: Text(
-                            "Level : ${cubit.quizzes[index].level}",
+                            "${S().level} : ${cubit.quizzes[index].level}",
                             style: TextStyle(
                               fontSize: 16.sp,
-                              color: AppColors.textGrey,
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? AppColors.textGrey
+                                  : Colors.white,
                               fontFamily: AppFonts.mainFont,
                             ),
                           ),
                         ),
                         Text(
-                          "Grade : ${(cubit.attempts[index].score / cubit.attempts[index].answers.length) * 100}%",
+                          "${S().quizGrade} ${(cubit.attempts[index].score / cubit.attempts[index].answers.length) * 100}%",
                           style: TextStyle(
                             fontSize: 16.sp,
-                            color: AppColors.textGrey,
+                            color:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? AppColors.textGrey
+                                    : Colors.white,
                             fontFamily: AppFonts.mainFont,
                           ),
                         ),

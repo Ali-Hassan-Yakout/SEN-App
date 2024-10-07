@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/add_lesson/view/add_lesson_screen.dart';
+import 'package:sen/features/app_manager/app_manager_cubit.dart';
+import 'package:sen/features/app_manager/app_manager_state.dart';
 import 'package:sen/features/edit_lesson/view/edit_lesson_screen.dart';
 import 'package:sen/features/lesson_control/manager/lesson_control_cubit.dart';
 import 'package:sen/features/lesson_control/manager/lesson_control_state.dart';
 import 'package:sen/features/lesson_read/view/lesson_read_screen.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 
@@ -66,20 +69,27 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                 textInputAction: TextInputAction.done,
                 cursorColor: AppColors.primary,
                 style: const TextStyle(
-                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
                 decoration: InputDecoration(
-                  label: Text(
-                    "Search",
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      color: AppColors.textGrey,
-                      fontFamily: AppFonts.mainFont,
-                    ),
+                  label: BlocBuilder<AppManagerCubit, AppManagerState>(
+                    buildWhen: (previous, current) => current is LanguageChange,
+                    builder: (context, state) {
+                      return Text(
+                        S().search,
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w800,
+                          fontFamily: AppFonts.mainFont,
+                        ),
+                      );
+                    },
                   ),
                   filled: true,
-                  fillColor: AppColors.textFormFieldFill,
+                  fillColor: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(16.r),
@@ -136,7 +146,9 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                     bottom: 15.h,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.white
+                        : AppColors.textFormFieldFillDark,
                     border: Border.all(
                       color: AppColors.textFormFieldBorder,
                       width: 2.5.w,
@@ -147,31 +159,50 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Title : ${cubit.lessons[index].title}",
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontFamily: AppFonts.mainFont,
-                        ),
+                      BlocBuilder<AppManagerCubit, AppManagerState>(
+                        buildWhen: (previous, current) =>
+                            current is LanguageChange,
+                        builder: (context, state) {
+                          return Text(
+                            "${S().title} : ${cubit.lessons[index].title}",
+                            style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w800,
+                              fontFamily: AppFonts.mainFont,
+                            ),
+                          );
+                        },
                       ),
                       Text(
                         cubit.lessons[index].description,
-                        overflow: TextOverflow.fade,
-                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                         softWrap: false,
                         style: TextStyle(
                           fontSize: 16.sp,
-                          color: AppColors.textGrey,
+                          color: Theme.of(context).brightness == Brightness.light
+                              ? AppColors.textGrey
+                              : Colors.white,
+                          fontWeight: FontWeight.w800,
                           fontFamily: AppFonts.mainFont,
                         ),
                       ),
-                      Text(
-                        "Level : ${cubit.lessons[index].level}",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          color: AppColors.textGrey,
-                          fontFamily: AppFonts.mainFont,
-                        ),
+                      BlocBuilder<AppManagerCubit, AppManagerState>(
+                        buildWhen: (previous, current) =>
+                            current is LanguageChange,
+                        builder: (context, state) {
+                          return Text(
+                            "${S().level} : ${cubit.lessons[index].level}",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              color: Theme.of(context).brightness == Brightness.light
+                                  ? AppColors.textGrey
+                                  : Colors.white,
+                              fontWeight: FontWeight.w800,
+                              fontFamily: AppFonts.mainFont,
+                            ),
+                          );
+                        },
                       ),
                       SizedBox(height: 15.h),
                       Row(
@@ -197,13 +228,21 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                                   borderRadius: BorderRadius.circular(10.r),
                                 ),
                               ),
-                              label: Text(
-                                'Edit',
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  color: Colors.white,
-                                  fontFamily: AppFonts.mainFont,
-                                ),
+                              label:
+                                  BlocBuilder<AppManagerCubit, AppManagerState>(
+                                buildWhen: (previous, current) =>
+                                    current is LanguageChange,
+                                builder: (context, state) {
+                                  return Text(
+                                    S().edit,
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w800,
+                                      fontFamily: AppFonts.mainFont,
+                                    ),
+                                  );
+                                },
                               ),
                               icon: Icon(
                                 Icons.edit,
@@ -224,13 +263,21 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                                   borderRadius: BorderRadius.circular(10.r),
                                 ),
                               ),
-                              label: Text(
-                                'Delete',
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  color: Colors.white,
-                                  fontFamily: AppFonts.mainFont,
-                                ),
+                              label:
+                                  BlocBuilder<AppManagerCubit, AppManagerState>(
+                                buildWhen: (previous, current) =>
+                                    current is LanguageChange,
+                                builder: (context, state) {
+                                  return Text(
+                                    S().delete,
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w800,
+                                      fontFamily: AppFonts.mainFont,
+                                    ),
+                                  );
+                                },
                               ),
                               icon: Icon(
                                 Icons.delete,
@@ -257,17 +304,21 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(
-            'Confirm Deletion',
-            style: TextStyle(
+          title: Text(
+            S().confirmDeletion,
+            style: const TextStyle(
+              fontWeight: FontWeight.w800,
               fontFamily: AppFonts.mainFont,
             ),
           ),
           content: Text(
-            'Are you sure you want to delete this lesson?',
+            S().areYouSureLesson,
             style: TextStyle(
               fontSize: 16.sp,
-              color: AppColors.textGrey,
+              color: Theme.of(context).brightness == Brightness.light
+                  ? AppColors.textGrey
+                  : Colors.white,
+              fontWeight: FontWeight.w800,
               fontFamily: AppFonts.mainFont,
             ),
           ),
@@ -287,10 +338,11 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                       ),
                     ),
                     child: Text(
-                      'Cancel',
+                      S().cancel,
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.white,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
@@ -310,10 +362,11 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                       ),
                     ),
                     child: Text(
-                      'Delete',
+                      S().delete,
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.white,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sen/features/login/view/login_screen.dart';
 import 'package:sen/features/register/view/register_screen.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 
@@ -31,11 +32,14 @@ class IntroScreen extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                "The most fun way to learn",
+                S().theMostFunWayToLearn,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: AppColors.textGrey,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textGrey
+                      : Colors.white,
                   fontSize: 28.sp,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
@@ -59,10 +63,11 @@ class IntroScreen extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    "Get Started",
+                    S().getStarted,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.sp,
+                      fontWeight: FontWeight.w800,
                       fontFamily: AppFonts.mainFont,
                     ),
                   ),
@@ -81,10 +86,11 @@ class IntroScreen extends StatelessWidget {
                   );
                 },
                 child: Text(
-                  "HAVE AN ACCOUNT? LOG IN",
+                  S().haveAnAccountLogIn,
                   style: TextStyle(
                     color: AppColors.primary,
                     fontSize: 18.sp,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),

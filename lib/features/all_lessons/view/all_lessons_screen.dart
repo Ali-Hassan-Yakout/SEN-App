@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/all_lessons/manager/all_lessons_cubit.dart';
 import 'package:sen/features/all_lessons/manager/all_lessons_state.dart';
 import 'package:sen/features/lesson_read/view/lesson_read_screen.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 
@@ -41,16 +42,17 @@ class _AllLessonsScreenState extends State<AllLessonsScreen> {
               Navigator.pop(context);
             },
             icon: Icon(
-              Icons.arrow_circle_left_rounded,
-              size: 40.r,
+              Icons.arrow_back_ios_new_rounded,
+              size: 25.r,
               color: AppColors.primary,
             ),
           ),
           title: Text(
-            "Lessons",
+            S().lessons,
             style: TextStyle(
               color: AppColors.primary,
               fontSize: 30.sp,
+              fontWeight: FontWeight.w800,
               fontFamily: AppFonts.mainFont,
             ),
           ),
@@ -88,7 +90,9 @@ class _AllLessonsScreenState extends State<AllLessonsScreen> {
                   right: 15.w,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.white
+                      : AppColors.textFormFieldFillDark,
                   border: Border.all(
                     color: AppColors.textFormFieldBorder,
                     width: 2.5.w,
@@ -99,29 +103,30 @@ class _AllLessonsScreenState extends State<AllLessonsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Title : ${cubit.lessons[index].title}",
+                      "${S().title} : ${cubit.lessons[index].title}",
                       style: TextStyle(
                         fontSize: 20.sp,
-                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
                     Text(
-                      "MR : ${cubit.lessons[index].teacherName}",
+                      "${S().mr} : ${cubit.lessons[index].teacherName}",
                       style: TextStyle(
                         fontSize: 18.sp,
-                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),
                     Text(
                       cubit.lessons[index].description,
-                      overflow: TextOverflow.fade,
+                      overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       softWrap: false,
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: AppColors.textGrey,
+                        fontWeight: FontWeight.w800,
                         fontFamily: AppFonts.mainFont,
                       ),
                     ),

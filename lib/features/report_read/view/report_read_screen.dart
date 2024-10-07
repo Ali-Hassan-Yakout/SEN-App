@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/models/report.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
@@ -23,16 +24,17 @@ class _ReportReadScreenState extends State<ReportReadScreen> {
             Navigator.pop(context);
           },
           icon: Icon(
-            Icons.arrow_circle_left_rounded,
-            size: 40.r,
+            Icons.arrow_back_ios_new_rounded,
+            size: 25.r,
             color: AppColors.primary,
           ),
         ),
         title: Text(
-          "Report",
+          S().report,
           style: TextStyle(
             color: AppColors.primary,
             fontSize: 30.sp,
+            fontWeight: FontWeight.w800,
             fontFamily: AppFonts.mainFont,
           ),
         ),
@@ -54,7 +56,9 @@ class _ReportReadScreenState extends State<ReportReadScreen> {
           right: 15.w,
         ),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.white
+              : AppColors.textFormFieldFillDark,
           border: Border.all(
             color: AppColors.textFormFieldBorder,
             width: 2.5.w,
@@ -70,16 +74,16 @@ class _ReportReadScreenState extends State<ReportReadScreen> {
                 widget.report.reports[index].date.split(' ')[0],
                 style: TextStyle(
                   fontSize: 16.sp,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
             ),
             Text(
-              "Subject : ${widget.report.reports[index].subject}",
+              "${S().subjectR} : ${widget.report.reports[index].subject}",
               style: TextStyle(
                 fontSize: 20.sp,
-                color: Colors.black,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),
@@ -91,7 +95,10 @@ class _ReportReadScreenState extends State<ReportReadScreen> {
               widget.report.reports[index].content,
               style: TextStyle(
                 fontSize: 18.sp,
-                color: AppColors.textGrey,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? AppColors.textGrey
+                    : Colors.white,
+                fontWeight: FontWeight.w800,
                 fontFamily: AppFonts.mainFont,
               ),
             ),

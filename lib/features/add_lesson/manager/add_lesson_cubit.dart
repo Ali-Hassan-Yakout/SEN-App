@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sen/features/add_lesson/manager/add_lesson_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/models/teacher.dart';
 
 class AddLessonCubit extends Cubit<AddLessonState> {
@@ -51,7 +52,7 @@ class AddLessonCubit extends Cubit<AddLessonState> {
       });
       emit(UploadVideoSuccess());
     } catch (e) {
-      emit(UploadVideoFailure('Video upload failed'));
+      emit(UploadVideoFailure(S().videoUploadFailed));
     }
   }
 
@@ -60,7 +61,7 @@ class AddLessonCubit extends Cubit<AddLessonState> {
         descriptionController.text.isEmpty ||
         level.first.isEmpty ||
         videoFile == null) {
-      emit(UploadLessonFailure("Details can't be blank"));
+      emit(UploadLessonFailure(S().detailsCantBeBlank));
       return;
     }
     loading = true;
@@ -88,7 +89,7 @@ class AddLessonCubit extends Cubit<AddLessonState> {
     } catch (e) {
       loading = false;
       onLoadingChange();
-      emit(UploadLessonFailure("Lesson upload failed"));
+      emit(UploadLessonFailure(S().lessonUploadFailed));
     }
   }
 

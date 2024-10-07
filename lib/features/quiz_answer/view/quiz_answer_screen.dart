@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/models/quiz.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
@@ -18,13 +19,13 @@ class QuizAnswerScreen extends StatelessWidget {
             Navigator.pop(context);
           },
           icon: Icon(
-            Icons.arrow_circle_left_rounded,
-            size: 40.r,
+            Icons.arrow_back_ios_new_rounded,
+            size: 25.r,
             color: AppColors.primary,
           ),
         ),
         title: Text(
-          "Answers",
+          S().answers,
           style: TextStyle(
             color: AppColors.primary,
             fontSize: 30.sp,
@@ -45,7 +46,9 @@ class QuizAnswerScreen extends StatelessWidget {
               left: 15.w,
             ),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.white
+                  : AppColors.textFormFieldFillDark,
               borderRadius: BorderRadius.circular(16.r),
               border: Border.all(
                 color: AppColors.textFormFieldBorder,
@@ -58,7 +61,7 @@ class QuizAnswerScreen extends StatelessWidget {
                   quiz.title,
                   style: TextStyle(
                     fontSize: 20.sp,
-                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -66,7 +69,10 @@ class QuizAnswerScreen extends StatelessWidget {
                   quiz.description,
                   style: TextStyle(
                     fontSize: 18.sp,
-                    color: AppColors.textGrey,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textGrey
+                        : Colors.white,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -94,7 +100,9 @@ class QuizAnswerScreen extends StatelessWidget {
             left: 15.w,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).brightness == Brightness.light
+                ? Colors.white
+                : AppColors.textFormFieldFillDark,
             borderRadius: BorderRadius.circular(16.r),
             border: Border.all(
               color: AppColors.textFormFieldBorder,
@@ -118,10 +126,10 @@ class QuizAnswerScreen extends StatelessWidget {
                       ),
               ),
               Text(
-                'Question :',
+                '${S().question} :',
                 style: TextStyle(
                   fontSize: 20.sp,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
@@ -130,16 +138,16 @@ class QuizAnswerScreen extends StatelessWidget {
                 quiz.questions[index].question,
                 style: TextStyle(
                   fontSize: 18.sp,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
               SizedBox(height: 15.h),
               Text(
-                'Answers :',
+                '${S().answers} :',
                 style: TextStyle(
                   fontSize: 20.sp,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontFamily: AppFonts.mainFont,
                 ),
               ),
@@ -150,7 +158,9 @@ class QuizAnswerScreen extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 15.h),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: AppColors.textFormFieldFill,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
                     color: quiz.questions[index].correctAnswer == 0
@@ -163,7 +173,10 @@ class QuizAnswerScreen extends StatelessWidget {
                   quiz.questions[index].choices[0],
                   style: TextStyle(
                     fontSize: 18.sp,
-                    color: AppColors.textGrey,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textGrey
+                        : Colors.white,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -174,7 +187,9 @@ class QuizAnswerScreen extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 15.h),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: AppColors.textFormFieldFill,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
                     color: quiz.questions[index].correctAnswer == 1
@@ -187,7 +202,10 @@ class QuizAnswerScreen extends StatelessWidget {
                   quiz.questions[index].choices[1],
                   style: TextStyle(
                     fontSize: 18.sp,
-                    color: AppColors.textGrey,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textGrey
+                        : Colors.white,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -198,7 +216,9 @@ class QuizAnswerScreen extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 15.h),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: AppColors.textFormFieldFill,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
                     color: quiz.questions[index].correctAnswer == 2
@@ -211,7 +231,10 @@ class QuizAnswerScreen extends StatelessWidget {
                   quiz.questions[index].choices[2],
                   style: TextStyle(
                     fontSize: 18.sp,
-                    color: AppColors.textGrey,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textGrey
+                        : Colors.white,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),
@@ -222,7 +245,9 @@ class QuizAnswerScreen extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 15.h),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: AppColors.textFormFieldFill,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.textFormFieldFillLight
+                      : AppColors.textFormFieldFillDark,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
                     color: quiz.questions[index].correctAnswer == 3
@@ -235,7 +260,10 @@ class QuizAnswerScreen extends StatelessWidget {
                   quiz.questions[index].choices[3],
                   style: TextStyle(
                     fontSize: 18.sp,
-                    color: AppColors.textGrey,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? AppColors.textGrey
+                        : Colors.white,
+                    fontWeight: FontWeight.w800,
                     fontFamily: AppFonts.mainFont,
                   ),
                 ),

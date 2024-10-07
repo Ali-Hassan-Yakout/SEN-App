@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:sen/features/levels/view/levels_screen.dart';
 import 'package:sen/features/subjects/manager/subjects_cubit.dart';
 import 'package:sen/features/subjects/manager/subjects_state.dart';
+import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -29,6 +30,12 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> subjectTitlesTranslation = [
+      S.of(context).math,
+      S.of(context).english,
+      S.of(context).arabic,
+      S.of(context).therapy,
+    ];
     return BlocProvider(
       create: (context) => cubit,
       child: BlocBuilder<SubjectsCubit, SubjectsState>(
@@ -71,10 +78,11 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
-                                  cubit.subjectTitles[position],
+                                  subjectTitlesTranslation[position],
                                   style: TextStyle(
                                     fontSize: 30.sp,
                                     color: cubit.subjectTitleColors[position],
+                                    fontWeight: FontWeight.w800,
                                     fontFamily: AppFonts.mainFont,
                                   ),
                                 ),

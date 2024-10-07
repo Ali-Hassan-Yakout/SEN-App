@@ -10,5 +10,9 @@ class AppManagerCubit extends Cubit<AppManagerState> {
 
   void onScreenChange() => emit(ScreenChange());
 
+  void onLanguageChange() => emit(LanguageChange());
+
+  void onThemeChange() => emit(ThemeChange());
+
   void onTextFormFieldChange() => emit(TextFormFieldChange());
 }
