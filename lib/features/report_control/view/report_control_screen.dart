@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/all_students/view/all_students_screen.dart';
+import 'package:sen/features/app_manager/app_manager_cubit.dart';
+import 'package:sen/features/app_manager/app_manager_state.dart';
 import 'package:sen/features/report_control/manager/report_control_cubit.dart';
 import 'package:sen/features/report_control/manager/report_control_state.dart';
 import 'package:sen/features/report_read/view/report_read_screen.dart';
@@ -77,86 +79,91 @@ class _ReportControlScreenState extends State<ReportControlScreen> {
                   ),
                 );
               },
-              child: Container(
-                padding: EdgeInsets.all(15.r),
-                margin: EdgeInsets.only(
-                  top: 15.h,
-                  left: 15.w,
-                  right: 15.w,
-                ),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.light
-                      ? Colors.white
-                      : AppColors.textFormFieldFillDark,
-                  border: Border.all(
-                    color: AppColors.textFormFieldBorder,
-                    width: 2.5.w,
-                  ),
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      cubit.reports[index].lastReportDate.split(' ')[0],
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w800,
-                        fontFamily: AppFonts.mainFont,
-                      ),
+              child: BlocBuilder<AppManagerCubit, AppManagerState>(
+                buildWhen: (previous, current) => current is ThemeChange,
+                builder: (context, state) {
+                  return Container(
+                    padding: EdgeInsets.all(15.r),
+                    margin: EdgeInsets.only(
+                      top: 15.h,
+                      left: 15.w,
+                      right: 15.w,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.white
+                          : AppColors.textFormFieldFillDark,
+                      border: Border.all(
+                        color: AppColors.textFormFieldBorder,
+                        width: 2.5.w,
+                      ),
+                      borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        CircleAvatar(
-                          radius: 35.r,
-                          backgroundColor: AppColors.primaryBackground,
-                          child: cubit.reports[index].image.isEmpty
-                              ? Text(
-                                  cubit.reports[index].name[0],
-                                  style: TextStyle(
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w800,
-                                    fontFamily: AppFonts.mainFont,
-                                  ),
-                                )
-                              : Image.asset(cubit.reports[index].image),
-                        ),
-                        SizedBox(width: 15.w),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                cubit.reports[index].name,
-                                style: TextStyle(
-                                  fontSize: 20.sp,
-                                  fontWeight: FontWeight.w800,
-                                  fontFamily: AppFonts.mainFont,
-                                ),
-                              ),
-                              Text(
-                                cubit.reports[index].lastReportSubject,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                                softWrap: false,
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  color: Theme.of(context).brightness ==
-                                          Brightness.light
-                                      ? AppColors.textGrey
-                                      : Colors.white,
-                                  fontWeight: FontWeight.w800,
-                                  fontFamily: AppFonts.mainFont,
-                                ),
-                              ),
-                            ],
+                        Text(
+                          cubit.reports[index].lastReportDate.split(' ')[0],
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w800,
+                            fontFamily: AppFonts.mainFont,
                           ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            CircleAvatar(
+                              radius: 35.r,
+                              backgroundColor: AppColors.primaryBackground,
+                              child: cubit.reports[index].image.isEmpty
+                                  ? Text(
+                                      cubit.reports[index].name[0],
+                                      style: TextStyle(
+                                        fontSize: 30.sp,
+                                        fontWeight: FontWeight.w800,
+                                        fontFamily: AppFonts.mainFont,
+                                      ),
+                                    )
+                                  : Image.asset(cubit.reports[index].image),
+                            ),
+                            SizedBox(width: 15.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    cubit.reports[index].name,
+                                    style: TextStyle(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.w800,
+                                      fontFamily: AppFonts.mainFont,
+                                    ),
+                                  ),
+                                  Text(
+                                    cubit.reports[index].lastReportSubject,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    softWrap: false,
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? AppColors.textGrey
+                                          : Colors.white,
+                                      fontWeight: FontWeight.w800,
+                                      fontFamily: AppFonts.mainFont,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  );
+                },
               ),
             );
           },

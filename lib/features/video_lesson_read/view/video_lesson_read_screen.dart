@@ -6,19 +6,19 @@ import 'package:sen/models/lesson.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
 
-class LessonReadScreen extends StatefulWidget {
+class VideoLessonReadScreen extends StatefulWidget {
   final Lesson lesson;
 
-  const LessonReadScreen({
+  const VideoLessonReadScreen({
     super.key,
     required this.lesson,
   });
 
   @override
-  State<LessonReadScreen> createState() => _LessonReadScreenState();
+  State<VideoLessonReadScreen> createState() => _VideoLessonReadScreenState();
 }
 
-class _LessonReadScreenState extends State<LessonReadScreen> {
+class _VideoLessonReadScreenState extends State<VideoLessonReadScreen> {
   late CachedVideoPlayerController videoPlayerController;
   late CustomVideoPlayerController customVideoPlayerController;
 

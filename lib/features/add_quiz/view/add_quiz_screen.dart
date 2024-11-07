@@ -190,36 +190,41 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                   ),
                 ),
                 SizedBox(height: 15.h),
-                TextFormField(
-                  controller: cubit.descriptionController,
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
-                  cursorColor: AppColors.primary,
-                  style: const TextStyle(
-                    fontFamily: AppFonts.mainFont,
-                  ),
-                  textAlignVertical: TextAlignVertical.top,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Theme.of(context).brightness == Brightness.light
-                        ? AppColors.textFormFieldFillLight
-                        : AppColors.textFormFieldFillDark,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(16.r),
-                      ),
-                      borderSide: BorderSide(
-                        color: AppColors.textFormFieldBorder,
-                        width: 2.5.w,
-                      ),
+                SizedBox(
+                  height: 340.h,
+                  child: TextFormField(
+                    controller: cubit.descriptionController,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
+                    cursorColor: AppColors.primary,
+                    style: const TextStyle(
+                      fontFamily: AppFonts.mainFont,
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(16.r),
+                    maxLines: null,
+                    expands: true,
+                    textAlignVertical: TextAlignVertical.top,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Theme.of(context).brightness == Brightness.light
+                          ? AppColors.textFormFieldFillLight
+                          : AppColors.textFormFieldFillDark,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(16.r),
+                        ),
+                        borderSide: BorderSide(
+                          color: AppColors.textFormFieldBorder,
+                          width: 2.5.w,
+                        ),
                       ),
-                      borderSide: BorderSide(
-                        color: AppColors.textFormFieldBorder,
-                        width: 2.5.w,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(16.r),
+                        ),
+                        borderSide: BorderSide(
+                          color: AppColors.textFormFieldBorder,
+                          width: 2.5.w,
+                        ),
                       ),
                     ),
                   ),

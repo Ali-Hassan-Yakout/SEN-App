@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sen/features/all_lessons/manager/all_lessons_cubit.dart';
 import 'package:sen/features/all_lessons/manager/all_lessons_state.dart';
-import 'package:sen/features/lesson_read/view/lesson_read_screen.dart';
+import 'package:sen/features/cards_lesson_read/view/cards_lesson_read_screen.dart';
+import 'package:sen/features/video_lesson_read/view/video_lesson_read_screen.dart';
+
 import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
@@ -73,14 +75,25 @@ class _AllLessonsScreenState extends State<AllLessonsScreen> {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LessonReadScreen(
-                      lesson: cubit.lessons[index],
+                if (cubit.lessons[index].url.isEmpty) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CardsLessonReadScreen(
+                        lesson: cubit.lessons[index],
+                      ),
                     ),
-                  ),
-                );
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VideoLessonReadScreen(
+                        lesson: cubit.lessons[index],
+                      ),
+                    ),
+                  );
+                }
               },
               child: Container(
                 padding: EdgeInsets.all(15.r),

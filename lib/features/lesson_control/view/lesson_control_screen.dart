@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sen/features/add_lesson/view/add_lesson_screen.dart';
 import 'package:sen/features/app_manager/app_manager_cubit.dart';
 import 'package:sen/features/app_manager/app_manager_state.dart';
+import 'package:sen/features/cards_lesson_read/view/cards_lesson_read_screen.dart';
 import 'package:sen/features/edit_lesson/view/edit_lesson_screen.dart';
 import 'package:sen/features/lesson_control/manager/lesson_control_cubit.dart';
 import 'package:sen/features/lesson_control/manager/lesson_control_state.dart';
-import 'package:sen/features/lesson_read/view/lesson_read_screen.dart';
+import 'package:sen/features/lesson_type/view/lesson_type_screen.dart';
+import 'package:sen/features/video_lesson_read/view/Video_lesson_read_screen.dart';
 import 'package:sen/generated/l10n.dart';
 import 'package:sen/utils/app_colors.dart';
 import 'package:sen/utils/app_fonts.dart';
@@ -41,7 +42,7 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const AddLessonScreen(),
+                    builder: (context) => const LessonTypeScreen(),
                   ),
                 ).then((_) {
                   cubit.getLessons();
@@ -131,14 +132,25 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LessonReadScreen(
-                        lesson: cubit.lessons[index],
+                  if (cubit.lessons[index].url.isEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CardsLessonReadScreen(
+                          lesson: cubit.lessons[index],
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VideoLessonReadScreen(
+                          lesson: cubit.lessons[index],
+                        ),
+                      ),
+                    );
+                  }
                 },
                 child: Container(
                   padding: EdgeInsets.all(15.r),
@@ -180,9 +192,10 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                         softWrap: false,
                         style: TextStyle(
                           fontSize: 16.sp,
-                          color: Theme.of(context).brightness == Brightness.light
-                              ? AppColors.textGrey
-                              : Colors.white,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? AppColors.textGrey
+                                  : Colors.white,
                           fontWeight: FontWeight.w800,
                           fontFamily: AppFonts.mainFont,
                         ),
@@ -195,7 +208,8 @@ class _LessonControlScreenState extends State<LessonControlScreen> {
                             "${S().level} : ${cubit.lessons[index].level}",
                             style: TextStyle(
                               fontSize: 16.sp,
-                              color: Theme.of(context).brightness == Brightness.light
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
                                   ? AppColors.textGrey
                                   : Colors.white,
                               fontWeight: FontWeight.w800,

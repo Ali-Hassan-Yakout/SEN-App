@@ -22,8 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "addLesson": MessageLookupByLibrary.simpleMessage("اضافة درس"),
+        "addCard": MessageLookupByLibrary.simpleMessage("اضافة كارت"),
+        "addCardsLesson":
+            MessageLookupByLibrary.simpleMessage("اضافة درس كروت"),
         "addQuiz": MessageLookupByLibrary.simpleMessage("أضافة اختبار"),
+        "addVideoLesson":
+            MessageLookupByLibrary.simpleMessage("اضافة درس فديو"),
         "age": MessageLookupByLibrary.simpleMessage("العمر"),
         "and": MessageLookupByLibrary.simpleMessage("و "),
         "answers": MessageLookupByLibrary.simpleMessage("الاجابات"),
@@ -37,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bySigning": MessageLookupByLibrary.simpleMessage(
             "من خلال تسجيل الدخول إلى SEN ، فإنك توافق على "),
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+        "cards": MessageLookupByLibrary.simpleMessage("كروت"),
         "checkYourInbox":
             MessageLookupByLibrary.simpleMessage("التحقق من البريد الوارد"),
         "checkYourInternet":
@@ -79,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "friendsFamily":
             MessageLookupByLibrary.simpleMessage("الأصدقاء/العائلة"),
         "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+        "goToLessons": MessageLookupByLibrary.simpleMessage("اذهب الي الدروس"),
         "grade": MessageLookupByLibrary.simpleMessage("الصف"),
         "grades": MessageLookupByLibrary.simpleMessage("الدرجات"),
         "haveAnAccountLogIn":
@@ -94,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "learningDifficulties":
             MessageLookupByLibrary.simpleMessage("صعوبات التعلم"),
+        "lessonType": MessageLookupByLibrary.simpleMessage("نوع الدرس"),
         "lessonUploadFailed":
             MessageLookupByLibrary.simpleMessage("فشل رفع الدرس"),
         "lessonUploaded": MessageLookupByLibrary.simpleMessage("تم رفع الدرس"),
@@ -147,10 +154,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "therapy": MessageLookupByLibrary.simpleMessage("تعديل السلوك"),
         "theyLearnHowToWriteItThemselves": MessageLookupByLibrary.simpleMessage(
             "سيتعلمون كيفية كتابته بأنفسهم!"),
+        "thisIsAllForThisLesson":
+            MessageLookupByLibrary.simpleMessage("هذا كل شيء لهذا الدرس"),
         "title": MessageLookupByLibrary.simpleMessage("عنوان"),
         "tryAgainLater":
             MessageLookupByLibrary.simpleMessage("حاول مرة أخرى لاحقا"),
         "upload": MessageLookupByLibrary.simpleMessage("رفع"),
+        "video": MessageLookupByLibrary.simpleMessage("فديو"),
         "videoUploadFailed":
             MessageLookupByLibrary.simpleMessage("فشل رفع الفديو"),
         "weHateGoodByes":

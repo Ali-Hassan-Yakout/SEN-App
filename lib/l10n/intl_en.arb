@@ -88,7 +88,7 @@
   "confirmDeletion": "Confirm Deletion",
   "search": "Search",
   "editLesson": "Edit Lesson",
-  "addLesson": "Add Lesson",
+  "addVideoLesson": "Add Video Lesson",
   "upload": "UPLOAD",
   "attach": "ATTACH",
   "areYouSureQuiz": "Are you sure you want to delete this quiz?",
@@ -103,5 +103,12 @@
   "quizUploaded": "Quiz Uploaded",
   "videoUploadFailed": "Video upload failed",
   "lessonUploadFailed": "Lesson upload failed",
-  "lessonUploaded": "Lesson Uploaded"
+  "lessonUploaded": "Lesson Uploaded",
+  "lessonType": "Lesson Type",
+  "cards": "Cards",
+  "video": "Video",
+  "addCardsLesson": "Add Cards Lesson",
+  "addCard":"Add Card",
+  "thisIsAllForThisLesson": "This is all for this lesson",
+  "goToLessons": "GO TO LESSONS"
 }

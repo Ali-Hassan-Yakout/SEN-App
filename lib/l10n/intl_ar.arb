@@ -88,7 +88,7 @@
   "confirmDeletion": "تأكيد الحذف",
   "search": "بحث",
   "editLesson": "تعديل الدرس",
-  "addLesson": "اضافة درس",
+  "addVideoLesson": "اضافة درس فديو",
   "upload": "رفع",
   "attach": "ألحق",
   "areYouSureQuiz": "هل أنت متأكد من أنك تريد حذف هذا الاختبار؟",
@@ -103,5 +103,12 @@
   "quizUploaded": "تم رفع الاختبار",
   "videoUploadFailed": "فشل رفع الفديو",
   "lessonUploadFailed": "فشل رفع الدرس",
-  "lessonUploaded": "تم رفع الدرس"
+  "lessonUploaded": "تم رفع الدرس",
+  "lessonType": "نوع الدرس",
+  "cards": "كروت",
+  "video": "فديو",
+  "addCardsLesson": "اضافة درس كروت",
+  "addCard":"اضافة كارت",
+  "thisIsAllForThisLesson": "هذا كل شيء لهذا الدرس",
+  "goToLessons": "اذهب الي الدروس"
 }

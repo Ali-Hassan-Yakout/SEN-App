@@ -22,8 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "addLesson": MessageLookupByLibrary.simpleMessage("Add Lesson"),
+        "addCard": MessageLookupByLibrary.simpleMessage("Add Card"),
+        "addCardsLesson":
+            MessageLookupByLibrary.simpleMessage("Add Cards Lesson"),
         "addQuiz": MessageLookupByLibrary.simpleMessage("Add Quiz"),
+        "addVideoLesson":
+            MessageLookupByLibrary.simpleMessage("Add Video Lesson"),
         "age": MessageLookupByLibrary.simpleMessage("Age"),
         "and": MessageLookupByLibrary.simpleMessage("and "),
         "answers": MessageLookupByLibrary.simpleMessage("Answers"),
@@ -38,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bySigning": MessageLookupByLibrary.simpleMessage(
             "By signing in to SEN, you agree to our "),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cards": MessageLookupByLibrary.simpleMessage("Cards"),
         "checkYourInbox":
             MessageLookupByLibrary.simpleMessage("Check your inbox"),
         "checkYourInternet":
@@ -79,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "friendsFamily": MessageLookupByLibrary.simpleMessage("Friends/family"),
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "goToLessons": MessageLookupByLibrary.simpleMessage("GO TO LESSONS"),
         "grade": MessageLookupByLibrary.simpleMessage("Grade"),
         "grades": MessageLookupByLibrary.simpleMessage("Grades"),
         "haveAnAccountLogIn":
@@ -94,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "learningDifficulties":
             MessageLookupByLibrary.simpleMessage("Learning difficulties"),
+        "lessonType": MessageLookupByLibrary.simpleMessage("Lesson Type"),
         "lessonUploadFailed":
             MessageLookupByLibrary.simpleMessage("Lesson upload failed"),
         "lessonUploaded":
@@ -147,10 +154,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "therapy": MessageLookupByLibrary.simpleMessage("Therapy"),
         "theyLearnHowToWriteItThemselves": MessageLookupByLibrary.simpleMessage(
             "They\'ll learn how to write it themselves!"),
+        "thisIsAllForThisLesson":
+            MessageLookupByLibrary.simpleMessage("This is all for this lesson"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "tryAgainLater":
             MessageLookupByLibrary.simpleMessage("Try again later"),
         "upload": MessageLookupByLibrary.simpleMessage("UPLOAD"),
+        "video": MessageLookupByLibrary.simpleMessage("Video"),
         "videoUploadFailed":
             MessageLookupByLibrary.simpleMessage("Video upload failed"),
         "weHateGoodByes":

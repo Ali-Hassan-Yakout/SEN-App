@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class Lesson {
   String lessonId;
   String teacherId;
@@ -7,6 +9,7 @@ class Lesson {
   String teacherName;
   String description;
   String url;
+  List<Cards> cards = [];
 
   Lesson({
     required this.lessonId,
@@ -27,5 +30,24 @@ class Lesson {
         title = map['title'],
         teacherName = map['teacherName'],
         description = map['description'],
-        url = map['url'];
+        url = map['url'] {
+    map['cards'].forEach((element) {
+      cards.add(Cards.fromJson(element));
+    });
+  }
+}
+
+class Cards {
+  String url;
+  File? image;
+  String content;
+
+  Cards({
+    required this.url,
+    required this.content,
+  });
+
+  Cards.fromJson(Map<String, dynamic> map)
+      : url = map['url'],
+        content = map['content'];
 }

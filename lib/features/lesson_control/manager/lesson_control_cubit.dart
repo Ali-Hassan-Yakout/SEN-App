@@ -62,7 +62,16 @@ class LessonControlCubit extends Cubit<LessonControlState> {
   Future<void> deleteLesson(int index) async {
     try {
       String userId = fireAuth.currentUser!.uid;
-      await storage.ref('lessons/$userId/${lessons[index].lessonId}').delete();
+      if (lessons[index].url.isEmpty){
+        final list = await storage
+            .ref('lessons/$userId/${lessons[index].lessonId}')
+            .listAll();
+        for (var item in list.items) {
+          await item.delete();
+        }
+      }else{
+        await storage.ref('lessons/$userId/${lessons[index].lessonId}').delete();
+      }
       await fireStore
           .collection('lessons')
           .doc(lessons[index].lessonId)

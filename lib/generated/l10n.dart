@@ -940,11 +940,11 @@ class S {
     );
   }
 
-  /// `Add Lesson`
-  String get addLesson {
+  /// `Add Video Lesson`
+  String get addVideoLesson {
     return Intl.message(
-      'Add Lesson',
-      name: 'addLesson',
+      'Add Video Lesson',
+      name: 'addVideoLesson',
       desc: '',
       args: [],
     );
@@ -1095,6 +1095,76 @@ class S {
     return Intl.message(
       'Lesson Uploaded',
       name: 'lessonUploaded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lesson Type`
+  String get lessonType {
+    return Intl.message(
+      'Lesson Type',
+      name: 'lessonType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cards`
+  String get cards {
+    return Intl.message(
+      'Cards',
+      name: 'cards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video`
+  String get video {
+    return Intl.message(
+      'Video',
+      name: 'video',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Cards Lesson`
+  String get addCardsLesson {
+    return Intl.message(
+      'Add Cards Lesson',
+      name: 'addCardsLesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Card`
+  String get addCard {
+    return Intl.message(
+      'Add Card',
+      name: 'addCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is all for this lesson`
+  String get thisIsAllForThisLesson {
+    return Intl.message(
+      'This is all for this lesson',
+      name: 'thisIsAllForThisLesson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `GO TO LESSONS`
+  String get goToLessons {
+    return Intl.message(
+      'GO TO LESSONS',
+      name: 'goToLessons',
       desc: '',
       args: [],
     );

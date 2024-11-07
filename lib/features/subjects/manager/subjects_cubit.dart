@@ -26,13 +26,13 @@ class SubjectsCubit extends Cubit<SubjectsState> {
     const Color.fromRGBO(210, 223, 255, 1),
     const Color.fromRGBO(255, 228, 187, 1),
     const Color.fromRGBO(225, 255, 187, 1),
-    const Color.fromRGBO(228, 187, 255, 1.0),
+    const Color.fromRGBO(228, 187, 255, 1),
   ];
   List<Color> subjectTitleColors = [
     const Color.fromRGBO(78, 103, 168, 1),
     const Color.fromRGBO(170, 137, 87, 1),
     const Color.fromRGBO(104, 137, 63, 1),
-    const Color.fromRGBO(130, 63, 137, 1.0),
+    const Color.fromRGBO(130, 63, 137, 1),
   ];
 
   Future<void> getDifficulties() async {
