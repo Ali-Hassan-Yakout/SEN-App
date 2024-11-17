@@ -139,8 +139,7 @@ class _CardsLessonReadScreenState extends State<CardsLessonReadScreen> {
                           backgroundColor: AppColors.textFormFieldBorder,
                           minHeight: 15.h,
                           borderRadius: BorderRadius.circular(16.r),
-                          value: currentIndex.toDouble() +
-                              1 / widget.lesson.cards.length,
+                          value: currentIndex.toDouble() / widget.lesson.cards.length,
                         ),
                       ),
                       SizedBox(height: 20.h),
